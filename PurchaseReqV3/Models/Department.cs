@@ -2,9 +2,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PurchaseReq.Models
+namespace PurchaseReqV3.Models
 {
-    [Table("Department", Schema = "PurchaseReq")]
+    [Table("Department", Schema = "PurchaseReqV3")]
     public class Department : Base
     {
         [DataType(DataType.Text), MaxLength(50)]

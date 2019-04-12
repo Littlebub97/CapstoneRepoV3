@@ -4,12 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.AspNetCore.Identity;
 
-namespace PurchaseReq.Models
+
+namespace PurchaseReqV3.Models
 {
     [Table("User", Schema = "PurchaseReq")]
-    public class User : IdentityUser
+    public class User 
     {
         [DataType(DataType.Text), MaxLength(30)]
         public string F_name { get; set; }

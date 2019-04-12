@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PurchaseReqV3.Models
 {
-    [Table("Budget", Schema ="PurchaseReq")]
+    [Table("Budget", Schema ="PurchaseReqV3")]
     public class Budget : Base
     {
         [DataType(DataType.Text), MaxLength(50)]

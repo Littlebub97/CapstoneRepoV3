@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PurchaseReqV3.Models
 {
-    [Table("Campus", Schema = "PurchaseReq")]
+    [Table("Campus", Schema = "PurchaseReqV3")]
     public class Campus : Base
     { 
         [StringLength(50)]

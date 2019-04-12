@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using PurchaseReq.Models;
+using PurchaseReqV3.Models;
 
-namespace PurchaseReq.Models
+namespace PurchaseReqV3.Models
 {
     [Table("JobRole", Schema = "PurchaseReq")]
     public class JobRole : Base

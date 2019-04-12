@@ -18,6 +18,7 @@ namespace PurchaseReqV3.Models
         }
     }
 
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
@@ -29,5 +30,18 @@ namespace PurchaseReqV3.Models
         {
             return new ApplicationDbContext();
         }
+        public DbSet<Budget> Budget { get; set; }
+        public DbSet<Campus> Campus { get; set; }
+        public DbSet<College> College { get; set; }
+        public DbSet<Department> Department { get; set; }
+        public DbSet<Divsion> Division { get; set; }
+        public DbSet<Item> Item { get; set; }
+        public DbSet<JobRole> JobRole { get; set; }
+        public DbSet<PurchaseRequisition> PurchaseRequisition { get; set; }
+        public DbSet<User> User { get; set; }
+        public DbSet<Vendor> Vendor { get; set; }
+
     }
+
+
 }

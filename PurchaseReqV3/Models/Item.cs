@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
-namespace PurchaseReq.Models
+namespace PurchaseReqV3.Models
 {
     [Table("Item", Schema = "PurchaseReq")]
     public class Item : Base

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PurchaseReq.Models
+namespace PurchaseReqV3.Models
 {
     [Table("Vendor", Schema = "PurchaseReq")]
     public class Vendor : Base
