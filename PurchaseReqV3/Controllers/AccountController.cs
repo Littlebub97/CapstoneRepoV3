@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using PurchaseReqV3.Models;
 
+//comment in one of the files
 namespace PurchaseReqV3.Controllers
 {
     [Authorize]
