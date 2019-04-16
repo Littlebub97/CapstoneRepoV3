@@ -207,7 +207,6 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Base.cs" />
     <Compile Include="Models\Budget.cs" />
-    <Compile Include="Models\BudgetViewModel.cs" />
     <Compile Include="Models\Campus.cs" />
     <Compile Include="Models\College.cs" />
     <Compile Include="Models\Department.cs" />

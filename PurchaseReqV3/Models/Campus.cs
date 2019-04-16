@@ -15,7 +15,7 @@ namespace PurchaseReqV3.Models
 
         //Consider changing the length
         //Consider making a model
-        [StringLength(50)]
+        [StringLength(100)]
         public string Address { get; set; }
         //oof
         //Double oof

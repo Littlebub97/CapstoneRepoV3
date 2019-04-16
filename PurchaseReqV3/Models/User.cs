@@ -19,5 +19,8 @@ namespace PurchaseReqV3.Models
       
         [DataType(DataType.Text), MaxLength(100)]
         public string Address { get; set; }
+
+        [InverseProperty(nameof(Division))]
+        public Divsion Division { get; set; }
     }
 }
