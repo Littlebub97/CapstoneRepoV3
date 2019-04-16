@@ -13,10 +13,10 @@ namespace PurchaseReqV3.Models
         [DataType(DataType.Text), MaxLength(50)]
         public string Name { get; set; }
 
-        [ForeignKey(nameof(UserId))]
-        public User DivisionChair { get; set; }
+       // [ForeignKey(nameof(UserId))]
+       // public User DivisionChair { get; set; }
         
-        public int UserId { get; set; }
+       // public int UserId { get; set; }
         //Division chair
         //Division above divisions Dont worrry about it
         //Inverse property User supervisor int Id
