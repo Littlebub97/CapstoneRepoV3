@@ -12,6 +12,7 @@ namespace PurchaseReqV3
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            createRolesandUsers();
 
         }
 
@@ -20,7 +21,7 @@ namespace PurchaseReqV3
             ApplicationDbContext context = new ApplicationDbContext();
 
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
-            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            var UserManager = new UserManager<User>(new UserStore<User>(context));
 
 
             // In Startup iam creating first Admin Role and creating a default Admin User    
@@ -34,7 +35,7 @@ namespace PurchaseReqV3
 
                 //Here we create a Admin super user who will maintain the website                  
 
-                var user = new ApplicationUser();
+                var user = new User();
                 user.UserName = "admin";
                 user.Email = "admin@admin.com";
 
