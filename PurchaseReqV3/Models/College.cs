@@ -12,5 +12,6 @@ namespace PurchaseReqV3.Models
     {
         [DataType(DataType.Text),MaxLength(50)]
         public string Name { get; set; }
+        //comment
     }
 }
