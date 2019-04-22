@@ -38,6 +38,8 @@ namespace PurchaseReqV3.Controllers
         // GET: Budgets/Create
         public ActionResult Create()
         {
+            // _UserManager.GetAsync HttpContext.User 
+            ViewBag.dateCreated = DateTime.Now;
             return View();
         }
 
@@ -48,13 +50,14 @@ namespace PurchaseReqV3.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Type,Amount,DateCreated,DateEnded,StateContract")] Budget budget)
         {
+            budget.DateCreated = DateTime.Now;
             if (ModelState.IsValid)
             {
                 db.Budget.Add(budget);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+          
             return View(budget);
         }
 
