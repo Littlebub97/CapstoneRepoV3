@@ -206,9 +206,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201904201927567_Initial.cs" />
-    <Compile Include="Migrations\201904201927567_Initial.Designer.cs">
-      <DependentUpon>201904201927567_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201904231709474_Initial.cs" />
+    <Compile Include="Migrations\201904231709474_Initial.Designer.cs">
+      <DependentUpon>201904231709474_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -292,11 +292,6 @@
     <Content Include="Views\Campus\Details.cshtml" />
     <Content Include="Views\Campus\Edit.cshtml" />
     <Content Include="Views\Campus\Index.cshtml" />
-    <Content Include="Views\Budgets\Create.cshtml" />
-    <Content Include="Views\Budgets\Delete.cshtml" />
-    <Content Include="Views\Budgets\Details.cshtml" />
-    <Content Include="Views\Budgets\Edit.cshtml" />
-    <Content Include="Views\Budgets\Index.cshtml" />
     <Content Include="Views\Colleges\Create.cshtml" />
     <Content Include="Views\Colleges\Delete.cshtml" />
     <Content Include="Views\Colleges\Details.cshtml" />
@@ -309,6 +304,11 @@
     <Content Include="Views\PurchaseRequisitions\Index.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Budgets\Create.cshtml" />
+    <Content Include="Views\Budgets\Delete.cshtml" />
+    <Content Include="Views\Budgets\Details.cshtml" />
+    <Content Include="Views\Budgets\Edit.cshtml" />
+    <Content Include="Views\Budgets\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -327,8 +327,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904201927567_Initial.resx">
-      <DependentUpon>201904201927567_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904231709474_Initial.resx">
+      <DependentUpon>201904231709474_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

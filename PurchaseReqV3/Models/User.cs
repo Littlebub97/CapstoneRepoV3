@@ -31,6 +31,7 @@ namespace PurchaseReqV3.Models
         [DataType(DataType.Text), MaxLength(100)]
         public string Address { get; set; }
 
+        //Budget Code in User
        // [InverseProperty(nameof(Division))]
        // public Divsion Division { get; set; }
     }

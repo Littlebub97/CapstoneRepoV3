@@ -19,12 +19,16 @@ namespace PurchaseReqV3.Models
         [DataType(DataType.Currency)]
         public decimal Amount { get; set; }
 
-        public enum STATUS{ Active, Suspended, Cancelled }
+        public enum STATUS{ Active, Suspended, Cancelled } 
+
+        public STATUS Status { get; set; }
 
         public DateTime DateCreated { get; set; }
 
         public DateTime? DateEnded { get; set; }
 
         public bool StateContract { get; set; }
+
+        
     }
 }

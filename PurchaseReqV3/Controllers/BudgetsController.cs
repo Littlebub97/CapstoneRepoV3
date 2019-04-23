@@ -38,7 +38,6 @@ namespace PurchaseReqV3.Controllers
         // GET: Budgets/Create
         public ActionResult Create()
         {
-            // _UserManager.GetAsync HttpContext.User 
             ViewBag.dateCreated = DateTime.Now;
             return View();
         }
@@ -48,7 +47,7 @@ namespace PurchaseReqV3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Type,Amount,DateCreated,DateEnded,StateContract")] Budget budget)
+        public ActionResult Create([Bind(Include = "Id,Name,Type,Amount,Status,DateCreated,DateEnded,StateContract")] Budget budget)
         {
             budget.DateCreated = DateTime.Now;
             if (ModelState.IsValid)
@@ -57,7 +56,7 @@ namespace PurchaseReqV3.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-          
+
             return View(budget);
         }
 
@@ -81,7 +80,7 @@ namespace PurchaseReqV3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Type,Amount,DateCreated,DateEnded,StateContract")] Budget budget)
+        public ActionResult Edit([Bind(Include = "Id,Name,Type,Amount,Status,DateCreated,DateEnded,StateContract")] Budget budget)
         {
             if (ModelState.IsValid)
             {

@@ -15,11 +15,15 @@ namespace PurchaseReqV3.Migrations
                         Name = c.String(maxLength: 50),
                         Type = c.String(maxLength: 50),
                         Amount = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Status = c.Int(nullable: false),
                         DateCreated = c.DateTime(nullable: false),
                         DateEnded = c.DateTime(),
                         StateContract = c.Boolean(nullable: false),
+                        User_Id = c.String(maxLength: 128),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("PurchaseReq.User", t => t.User_Id)
+                .Index(t => t.User_Id);
             
             CreateTable(
                 "PurchaseReqV3.Campus",
@@ -215,6 +219,7 @@ namespace PurchaseReqV3.Migrations
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "PurchaseReq.User");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "PurchaseReq.User");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "PurchaseReq.User");
+            DropForeignKey("PurchaseReqV3.Budget", "User_Id", "PurchaseReq.User");
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("PurchaseReq.PurchaseRequisition", new[] { "Approver_Id" });
@@ -223,6 +228,7 @@ namespace PurchaseReqV3.Migrations
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("PurchaseReqV3.Department", new[] { "DepartmentHead_Id" });
+            DropIndex("PurchaseReqV3.Budget", new[] { "User_Id" });
             DropTable("PurchaseReq.Vendor");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetRoles");
