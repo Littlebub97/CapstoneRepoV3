@@ -15,6 +15,7 @@ namespace PurchaseReqV3.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Budgets
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             return View(db.Budget.ToList());

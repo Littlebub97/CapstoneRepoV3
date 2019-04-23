@@ -14,13 +14,7 @@ namespace PurchaseReqV3.Models
     [Table("User", Schema = "PurchaseReq")]
     public class User : IdentityUser
     {
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
-        {
-            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
-            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
-            // Add custom user claims here
-            return userIdentity;
-        }
+
 
         [DataType(DataType.Text), MaxLength(30)]
         public string F_name { get; set; }
@@ -31,8 +25,15 @@ namespace PurchaseReqV3.Models
         [DataType(DataType.Text), MaxLength(100)]
         public string Address { get; set; }
 
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
+        {
+            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
+            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
+            // Add custom user claims here
+            return userIdentity;
+        }
         //Budget Code in User
-       // [InverseProperty(nameof(Division))]
-       // public Divsion Division { get; set; }
+        // [InverseProperty(nameof(Division))]
+        // public Divsion Division { get; set; }
     }
 }
