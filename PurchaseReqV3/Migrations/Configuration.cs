@@ -22,25 +22,42 @@ namespace PurchaseReqV3.Migrations
             var PasswordHash = new PasswordHasher();
             context.Roles.AddOrUpdate(r => r.Id,
                 new IdentityRole { Name = "Admin" },
-                new IdentityRole {Name ="Employee" }
+                new IdentityRole {Name ="Employee" },
+                new IdentityRole { Name = "CFO" },
+                new IdentityRole { Name = "President" }
                 );
             //ADDING ADMIN
-            if (!context.Users.Any(u => u.UserName == "Admin@develop.com"))
+            if (!context.Users.Any(u => u.UserName == "Admin@web.com"))
             {
                 var admin = new User
                 {
-                    UserName = "Admin@develop.com",
-                    Email = "Admin@Develop.com",
-                    F_name = "Admin",
+                    UserName = "Admin@web.com",
+                    Email = "Admin@web.com",
+                    F_name = "Bill",
                     L_name = "Admin",
                     Address = "address",
-                    PasswordHash = PasswordHash.HashPassword("Admin1234!")
+                    PasswordHash = PasswordHash.HashPassword("Admin!123")
                 };
 
                 UserManager.Create(admin);
                 UserManager.AddToRole(admin.Id, "Admin");
             }
+            //Adding CFO
+            if (!context.Users.Any(u => u.UserName == "Alice@web.com"))
+            {
+                var CFO = new User
+                {
+                    UserName = "Alice@web.com",
+                    Email = "Alice@web.com",
+                    F_name = "Alice",
+                    L_name = "CFO",
+                    Address = "address",
+                    PasswordHash = PasswordHash.HashPassword("Alice!123")
+                };
 
+                UserManager.Create(CFO);
+                UserManager.AddToRole(CFO.Id, "CFO");
+            }
 
             //  This method will be called after migrating to the latest version.
 

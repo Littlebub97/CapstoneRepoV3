@@ -15,10 +15,11 @@ namespace PurchaseReqV3.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Budgets
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "CFO")]
         public ActionResult Index()
         {
             return View(db.Budget.ToList());
+            
         }
 
         // GET: Budgets/Details/5
