@@ -18,15 +18,24 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("PurchaseRequisition", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
- 
+
                 @if (User.Identity.IsAuthenticated)
                 {
                     if (User.IsInRole("Admin"))
                     {
                         @Html.ActionLink("Admin Page", "Index", "Account/Register", new { area = "" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("College Creation", "Index", "Colleges", new { area = "" }, new { @class = "navbar-brand" })
                     }
                 }
-                </div>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("CFO"))
+                    {
+                        @Html.ActionLink("Budget Manager", "Index", "Budgets", new { area = "" }, new { @class = "navbar-brand" })
+                    }
+                }
+            </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>

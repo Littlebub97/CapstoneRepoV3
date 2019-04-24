@@ -51,22 +51,22 @@ namespace PurchaseReqV3
                 }
             }
 
-            // creating Creating Manager role    
-            if (!roleManager.RoleExists("Supervisor"))
-            {
-                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-                role.Name = "Supervisor";
-                roleManager.Create(role);
+            ////creating creating manager role
+            //if (!rolemanager.roleexists("supervisor"))
+            //{
+            //    var role = new microsoft.aspnet.identity.entityframework.identityrole();
+            //    role.name = "supervisor";
+            //    rolemanager.create(role);
 
-            }
+            //}
 
-            // creating Creating Employee role    
-            if (!roleManager.RoleExists("Employee"))
-            {
-                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-                role.Name = "Employee";
-                roleManager.Create(role);
-            }
+            ////creating creating employee role
+            //if (!rolemanager.roleexists("employee"))
+            //{
+            //    var role = new microsoft.aspnet.identity.entityframework.identityrole();
+            //    role.name = "employee";
+            //    rolemanager.create(role);
+            //}
         }
     }
 }
