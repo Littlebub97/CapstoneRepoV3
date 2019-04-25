@@ -15,7 +15,7 @@ namespace PurchaseReqV3.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Budgets
-        [Authorize(Roles = "CFO,Admin")]
+        [Authorize(Roles = "CFO")]
         public ActionResult Index()
         {
             return View(db.Budget.ToList());
@@ -38,6 +38,7 @@ namespace PurchaseReqV3.Controllers
         }
 
         // GET: Budgets/Create
+        [Authorize(Roles ="CFO")]
         public ActionResult Create()
         {
             ViewBag.dateCreated = DateTime.Now;
@@ -49,6 +50,7 @@ namespace PurchaseReqV3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles ="CFO")]
         public ActionResult Create([Bind(Include = "Id,Name,Type,Amount,Status,DateCreated,DateEnded,StateContract")] Budget budget)
         {
             budget.DateCreated = DateTime.Now;
@@ -63,6 +65,7 @@ namespace PurchaseReqV3.Controllers
         }
 
         // GET: Budgets/Edit/5
+        [Authorize(Roles ="CFO")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -82,6 +85,7 @@ namespace PurchaseReqV3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles ="CFO")]
         public ActionResult Edit([Bind(Include = "Id,Name,Type,Amount,Status,DateCreated,DateEnded,StateContract")] Budget budget)
         {
             if (ModelState.IsValid)
@@ -94,6 +98,7 @@ namespace PurchaseReqV3.Controllers
         }
 
         // GET: Budgets/Delete/5
+        [Authorize(Roles = "CFO")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -111,6 +116,7 @@ namespace PurchaseReqV3.Controllers
         // POST: Budgets/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "CFO")]
         public ActionResult DeleteConfirmed(int id)
         {
             Budget budget = db.Budget.Find(id);

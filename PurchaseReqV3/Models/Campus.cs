@@ -17,6 +17,9 @@ namespace PurchaseReqV3.Models
         //Consider making a model
         [StringLength(100)]
         public string Address { get; set; }
+
+        public int? CollegeId { get; set; }
+        public College College { get; set; }
         //oof
         //Double oof
         //Triple oof

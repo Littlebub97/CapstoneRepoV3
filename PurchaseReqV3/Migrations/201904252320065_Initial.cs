@@ -29,15 +29,18 @@ namespace PurchaseReqV3.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(maxLength: 50),
                         Address = c.String(maxLength: 100),
+                        CollegeId = c.Int(),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("PurchaseReqV3.College", t => t.CollegeId)
+                .Index(t => t.CollegeId);
             
             CreateTable(
                 "PurchaseReqV3.College",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(maxLength: 50),
+                        CollegeName = c.String(maxLength: 50),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -203,6 +206,7 @@ namespace PurchaseReqV3.Migrations
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("PurchaseReq.PurchaseRequisition", "Approver_Id", "PurchaseReq.User");
+            DropForeignKey("PurchaseReqV3.Campus", "CollegeId", "PurchaseReqV3.College");
             DropIndex("PurchaseReq.User", new[] { "DivisionId" });
             DropIndex("PurchaseReq.User", new[] { "Id" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
@@ -212,6 +216,7 @@ namespace PurchaseReqV3.Migrations
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
+            DropIndex("PurchaseReqV3.Campus", new[] { "CollegeId" });
             DropTable("PurchaseReq.User");
             DropTable("PurchaseReq.Vendor");
             DropTable("dbo.AspNetRoles");

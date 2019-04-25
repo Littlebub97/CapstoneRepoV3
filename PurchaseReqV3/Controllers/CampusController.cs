@@ -17,7 +17,8 @@ namespace PurchaseReqV3.Controllers
         // GET: Campus
         public ActionResult Index()
         {
-            return View(db.Campus.ToList());
+            var campus = db.Campus.Include(c => c.College);
+            return View(campus.ToList());
         }
 
         // GET: Campus/Details/5
@@ -38,6 +39,7 @@ namespace PurchaseReqV3.Controllers
         // GET: Campus/Create
         public ActionResult Create()
         {
+            ViewBag.CollegeId = new SelectList(db.College, "Id", "CollegeName");
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace PurchaseReqV3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Address")] Campus campus)
+        public ActionResult Create([Bind(Include = "Id,Name,Address,CollegeId")] Campus campus)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +57,7 @@ namespace PurchaseReqV3.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.CollegeId = new SelectList(db.College, "Id", "CollegeName", campus.CollegeId);
             return View(campus);
         }
 
@@ -70,6 +73,7 @@ namespace PurchaseReqV3.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CollegeId = new SelectList(db.College, "Id", "CollegeName", campus.CollegeId);
             return View(campus);
         }
 
@@ -78,7 +82,7 @@ namespace PurchaseReqV3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Address")] Campus campus)
+        public ActionResult Edit([Bind(Include = "Id,Name,Address,CollegeId")] Campus campus)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +90,7 @@ namespace PurchaseReqV3.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.CollegeId = new SelectList(db.College, "Id", "CollegeName", campus.CollegeId);
             return View(campus);
         }
 

@@ -10,8 +10,10 @@ namespace PurchaseReqV3.Models
     [Table("College", Schema = "PurchaseReqV3")]
     public class College : Base
     {
-        [DataType(DataType.Text),MaxLength(50)]
-        public string Name { get; set; }
+        [DataType(DataType.Text), MaxLength(50)]
+        public string CollegeName { get; set; }
+
+        public List<Campus> campuses { get; set; }
         //comment
     }
 }
