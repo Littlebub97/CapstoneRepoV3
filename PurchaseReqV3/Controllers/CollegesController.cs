@@ -15,12 +15,14 @@ namespace PurchaseReqV3.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Colleges
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             return View(db.College.ToList());
         }
 
         // GET: Colleges/Details/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,6 +38,7 @@ namespace PurchaseReqV3.Controllers
         }
 
         // GET: Colleges/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -46,6 +49,7 @@ namespace PurchaseReqV3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "Id,CollegeName")] College college)
         {
             if (ModelState.IsValid)
@@ -59,6 +63,7 @@ namespace PurchaseReqV3.Controllers
         }
 
         // GET: Colleges/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,6 +83,7 @@ namespace PurchaseReqV3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "Id,CollegeName")] College college)
         {
             if (ModelState.IsValid)
@@ -90,6 +96,7 @@ namespace PurchaseReqV3.Controllers
         }
 
         // GET: Colleges/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -107,6 +114,7 @@ namespace PurchaseReqV3.Controllers
         // POST: Colleges/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             College college = db.College.Find(id);
