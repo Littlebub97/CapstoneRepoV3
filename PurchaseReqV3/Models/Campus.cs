@@ -18,6 +18,7 @@ namespace PurchaseReqV3.Models
         [StringLength(100)]
         public string Address { get; set; }
 
+        //One college
         public int? CollegeId { get; set; }
         public College College { get; set; }
         //oof

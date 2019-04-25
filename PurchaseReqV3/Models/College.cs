@@ -13,6 +13,7 @@ namespace PurchaseReqV3.Models
         [DataType(DataType.Text), MaxLength(50)]
         public string CollegeName { get; set; }
 
+        //Many campuses
         public List<Campus> campuses { get; set; }
         //comment
     }
