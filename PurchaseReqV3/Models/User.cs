@@ -33,7 +33,7 @@ namespace PurchaseReqV3.Models
             return userIdentity;
         }
         //Budget Code in User
-        // [InverseProperty(nameof(Division))]
-        // public Divsion Division { get; set; }
+       //[InverseProperty(nameof(Division))]
+        //public Divsion Division { get; set; }
     }
 }
