@@ -49,8 +49,7 @@ namespace PurchaseReqV3.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "UserName")]
-        [EmailAddress]
+        [Display(Name = "Username")]
         public string UserName { get; set; }
 
         [Required]
@@ -73,7 +72,7 @@ namespace PurchaseReqV3.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
+        [Required]//Get rid of this everywhere
         [Display(Name ="UserName")]
         public string UserName { get; set; }
 

@@ -82,8 +82,10 @@ namespace PurchaseReqV3.Controllers
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
+            
             switch (result)
             {
+                
                 case SignInStatus.Success:
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
@@ -162,6 +164,7 @@ namespace PurchaseReqV3.Controllers
                 var user = new User { UserName = model.UserName, Email = model.Email, F_name = model.F_Name, L_name = model.L_Name};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 var userId = UserManager.FindByEmail(user.Email);
+                
                 if (result.Succeeded)
                 {
                   //  await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
