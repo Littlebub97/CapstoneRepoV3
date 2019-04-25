@@ -22,7 +22,7 @@ namespace PurchaseReqV3.Migrations
             var PasswordHash = new PasswordHasher();
             context.Roles.AddOrUpdate(r => r.Id,
                 new IdentityRole { Name = "Admin" },
-                new IdentityRole {Name ="Employee" },
+                new IdentityRole { Name = "Employee" },
                 new IdentityRole { Name = "CFO" },
                 new IdentityRole { Name = "President" }
                 );

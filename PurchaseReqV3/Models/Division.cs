@@ -7,11 +7,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PurchaseReqV3.Models
 {
-    [Table("Division", Schema = "ApplicationDbContext")]
+    [Table("Division", Schema = "PurchaseReq")]
     public class Divsion : Base
     {
         [DataType(DataType.Text), MaxLength(50)]
         public string Name { get; set; }
+
+        public ICollection<User> Users { get; set; }
 
        // [ForeignKey(nameof(UserId))]
        // public User DivisionChair { get; set; }
