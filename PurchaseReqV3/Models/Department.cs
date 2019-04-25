@@ -10,7 +10,12 @@ namespace PurchaseReqV3.Models
         [DataType(DataType.Text), MaxLength(50)]
         public string Name { get; set; }
 
-        public User DepartmentHead { get; set; }
-        //Department head
+        //public int? DepartmentHeadId { get; set; }
+        //public User DepartmentHead { get; set; }
+        //public int? DivisionId { get; set; }
+
+        //public Divsion Divsion { get; set; }
+        
     }
 }
+//Division<----department

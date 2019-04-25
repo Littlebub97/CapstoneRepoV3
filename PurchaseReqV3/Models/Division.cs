@@ -15,8 +15,12 @@ namespace PurchaseReqV3.Models
 
         public ICollection<User> Users { get; set; }
 
-       // [ForeignKey(nameof(UserId))]
-       // public User DivisionChair { get; set; }
+      //  [InverseProperty(nameof(Department.Divsion))]// 1 to M
+       // public ICollection<Department> Departments { get; set; }
+        //Budgets
+        //public int? DivisionChairId { get; set; }
+        //public User DivisionChair { get; set; }
+        //Don't get confused by the division object
         
        // public int UserId { get; set; }
         //Division chair
