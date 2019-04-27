@@ -39,6 +39,14 @@
                         @Html.ActionLink("Budget Manager", "Index", "Budgets", new { area = "" }, new { @class = "navbar-brand" })
                     }
                 }
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("State Auditor"))
+                    {
+                        @Html.ActionLink("Budgets", "Index", "Budgets", new { area = "" }, new { @class = "navbar-brand" })
+                        
+                    }
+                }
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">

@@ -24,7 +24,14 @@ namespace PurchaseReqV3.Migrations
                 new IdentityRole { Name = "Admin" },
                 new IdentityRole { Name = "Employee" },
                 new IdentityRole { Name = "CFO" },
-                new IdentityRole { Name = "President" }
+                new IdentityRole { Name = "President" },
+                new IdentityRole { Name = "Student Dean"},
+                new IdentityRole { Name = "Academin Division Chair" },
+                new IdentityRole { Name = "Purchasing staff" },
+                new IdentityRole { Name = "Academic Department Head" },
+                new IdentityRole { Name = "Maintenance Division Head" },
+                new IdentityRole { Name = "State Auditor" },
+                new IdentityRole { Name = "Grounds Keeping Department Head" }
                 );
             //ADDING ADMIN
             if (!context.Users.Any(u => u.UserName == "Admin@web.com"))
@@ -57,6 +64,38 @@ namespace PurchaseReqV3.Migrations
 
                 UserManager.Create(CFO);
                 UserManager.AddToRole(CFO.Id, "CFO");
+            }
+
+             if (!context.Users.Any(u => u.UserName == "Cheri@web.com"))
+            {
+                var StateAuditor = new User
+                {
+                    UserName = "Cheri@web.com",
+                    Email = "Cheri@web.com",
+                    F_name = "Cheri",
+                    L_name = "StateAuditor",
+                    Address = "address",
+                    PasswordHash = PasswordHash.HashPassword("Cheri!123")
+                };
+
+                UserManager.Create(StateAuditor);
+                UserManager.AddToRole(StateAuditor.Id, "State Auditor");
+            }
+
+            if (!context.Users.Any(u => u.UserName == "Steve@web.com"))
+            {
+                var Employee  = new User
+                {
+                    UserName = "Steve@web.com",
+                    Email = "Steve@web.com",
+                    F_name = "Steve",
+                    L_name = "Employee",
+                    Address = "address",
+                    PasswordHash = PasswordHash.HashPassword("Steve!123")
+                };
+
+                UserManager.Create(Employee);
+                UserManager.AddToRole(Employee.Id, "Employee");
             }
 
             //  This method will be called after migrating to the latest version.
