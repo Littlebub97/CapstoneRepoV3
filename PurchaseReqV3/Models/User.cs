@@ -36,6 +36,9 @@ namespace PurchaseReqV3.Models
         //[InverseProperty(nameof(Division))]
 
         public int? DivisionId { get; set; }
-        public Divsion Division { get; set; }
+        public Division Division { get; set; }
+
+        public int? DepartmentId { get; set; }
+        public Department Department { get; set; }
     }
 }

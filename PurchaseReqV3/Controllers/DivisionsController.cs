@@ -10,123 +10,107 @@ using PurchaseReqV3.Models;
 
 namespace PurchaseReqV3.Controllers
 {
-    public class BudgetsController : Controller
+    public class DivisionsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Budgets
-        [Authorize(Roles = "CFO, State Auditor, readonly")]
+        // GET: Divisions
         public ActionResult Index()
         {
-            return View(db.Budget.ToList());
-            
+            return View(db.Division.ToList());
         }
 
-        public ActionResult TodoList()
-        {
-            return View();
-
-        }
-
-        // GET: Budgets/Details/5
+        // GET: Divisions/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Budget budget = db.Budget.Find(id);
-            if (budget == null)
+            Division division = db.Division.Find(id);
+            if (division == null)
             {
                 return HttpNotFound();
             }
-            return View(budget);
+            return View(division);
         }
 
-        // GET: Budgets/Create
-        [Authorize(Roles ="CFO")]
+        // GET: Divisions/Create
         public ActionResult Create()
         {
-            ViewBag.dateCreated = DateTime.Now;
             return View();
         }
 
-        // POST: Budgets/Create
+        // POST: Divisions/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles ="CFO")]
-        public ActionResult Create([Bind(Include = "Id,Name,Type,Amount,Status,DateCreated,DateEnded,StateContract")] Budget budget)
+        public ActionResult Create([Bind(Include = "Id,Name")] Division division)
         {
-            budget.DateCreated = DateTime.Now;
             if (ModelState.IsValid)
             {
-                db.Budget.Add(budget);
+                db.Division.Add(division);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(budget);
+            return View(division);
         }
 
-        // GET: Budgets/Edit/5
-        [Authorize(Roles ="CFO")]
+        // GET: Divisions/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Budget budget = db.Budget.Find(id);
-            if (budget == null)
+            Division division = db.Division.Find(id);
+            if (division == null)
             {
                 return HttpNotFound();
             }
-            return View(budget);
+            return View(division);
         }
 
-        // POST: Budgets/Edit/5
+        // POST: Divisions/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles ="CFO")]
-        public ActionResult Edit([Bind(Include = "Id,Name,Type,Amount,Status,DateCreated,DateEnded,StateContract")] Budget budget)
+        public ActionResult Edit([Bind(Include = "Id,Name")] Division division)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(budget).State = EntityState.Modified;
+                db.Entry(division).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(budget);
+            return View(division);
         }
 
-        // GET: Budgets/Delete/5
-        [Authorize(Roles = "CFO")]
+        // GET: Divisions/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Budget budget = db.Budget.Find(id);
-            if (budget == null)
+            Division division = db.Division.Find(id);
+            if (division == null)
             {
                 return HttpNotFound();
             }
-            return View(budget);
+            return View(division);
         }
 
-        // POST: Budgets/Delete/5
+        // POST: Divisions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "CFO")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Budget budget = db.Budget.Find(id);
-            db.Budget.Remove(budget);
+            Division division = db.Division.Find(id);
+            db.Division.Remove(division);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

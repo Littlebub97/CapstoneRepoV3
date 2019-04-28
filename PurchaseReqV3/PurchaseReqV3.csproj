@@ -198,6 +198,8 @@
     <Compile Include="Controllers\BudgetsController.cs" />
     <Compile Include="Controllers\CampusController.cs" />
     <Compile Include="Controllers\CollegesController.cs" />
+    <Compile Include="Controllers\DepartmentsController.cs" />
+    <Compile Include="Controllers\DivisionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PurchaseRequisitionsController.cs" />
@@ -206,9 +208,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201904271737089_Initial.cs" />
-    <Compile Include="Migrations\201904271737089_Initial.Designer.cs">
-      <DependentUpon>201904271737089_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201904282305151_Initial.cs" />
+    <Compile Include="Migrations\201904282305151_Initial.Designer.cs">
+      <DependentUpon>201904282305151_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -312,6 +314,17 @@
     <Content Include="Views\Campus\Details.cshtml" />
     <Content Include="Views\Campus\Edit.cshtml" />
     <Content Include="Views\Campus\Index.cshtml" />
+    <Content Include="Views\Budgets\ToDoList.cshtml" />
+    <Content Include="Views\Departments\Create.cshtml" />
+    <Content Include="Views\Departments\Delete.cshtml" />
+    <Content Include="Views\Departments\Details.cshtml" />
+    <Content Include="Views\Departments\Edit.cshtml" />
+    <Content Include="Views\Departments\Index.cshtml" />
+    <Content Include="Views\Divisions\Create.cshtml" />
+    <Content Include="Views\Divisions\Delete.cshtml" />
+    <Content Include="Views\Divisions\Details.cshtml" />
+    <Content Include="Views\Divisions\Edit.cshtml" />
+    <Content Include="Views\Divisions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -330,8 +343,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904271737089_Initial.resx">
-      <DependentUpon>201904271737089_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904282305151_Initial.resx">
+      <DependentUpon>201904282305151_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

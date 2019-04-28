@@ -8,12 +8,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace PurchaseReqV3.Models
 {
     [Table("Division", Schema = "PurchaseReq")]
-    public class Divsion : Base
+    public class Division : Base
     {
         [DataType(DataType.Text), MaxLength(50)]
         public string Name { get; set; }
 
         public ICollection<User> Users { get; set; }
+
+        public User DivisionHead { get; set; }
 
       //  [InverseProperty(nameof(Department.Divsion))]// 1 to M
        // public ICollection<Department> Departments { get; set; }

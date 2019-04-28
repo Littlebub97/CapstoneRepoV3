@@ -34,7 +34,7 @@ namespace PurchaseReqV3.Models
         public DbSet<Campus> Campus { get; set; }
         public DbSet<College> College { get; set; }
         public DbSet<Department> Department { get; set; }
-        public DbSet<Divsion> Division { get; set; }
+        public DbSet<Division> Division { get; set; }
         public DbSet<Item> Item { get; set; }
         public DbSet<JobRole> JobRole { get; set; }
         public DbSet<PurchaseRequisition> PurchaseRequisition { get; set; }

@@ -50,17 +50,11 @@ namespace PurchaseReqV3.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(maxLength: 50),
+                        DepartmentHead_Id = c.String(maxLength: 128),
                     })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "PurchaseReq.Division",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(maxLength: 50),
-                    })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("PurchaseReq.User", t => t.DepartmentHead_Id)
+                .Index(t => t.DepartmentHead_Id);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -95,6 +89,18 @@ namespace PurchaseReqV3.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
+            
+            CreateTable(
+                "PurchaseReq.Division",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(maxLength: 50),
+                        DivisionHead_Id = c.String(maxLength: 128),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("PurchaseReq.User", t => t.DivisionHead_Id)
+                .Index(t => t.DivisionHead_Id);
             
             CreateTable(
                 "dbo.AspNetUserLogins",
@@ -184,38 +190,57 @@ namespace PurchaseReqV3.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        Division_Id = c.Int(),
+                        Department_Id = c.Int(),
                         F_name = c.String(maxLength: 30),
                         L_name = c.String(maxLength: 30),
                         Address = c.String(maxLength: 100),
                         DivisionId = c.Int(),
+                        DepartmentId = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.Id)
+                .ForeignKey("PurchaseReq.Division", t => t.Division_Id)
+                .ForeignKey("PurchaseReqV3.Department", t => t.Department_Id)
                 .ForeignKey("PurchaseReq.Division", t => t.DivisionId)
+                .ForeignKey("PurchaseReqV3.Department", t => t.DepartmentId)
                 .Index(t => t.Id)
-                .Index(t => t.DivisionId);
+                .Index(t => t.Division_Id)
+                .Index(t => t.Department_Id)
+                .Index(t => t.DivisionId)
+                .Index(t => t.DepartmentId);
             
         }
         
         public override void Down()
         {
+            DropForeignKey("PurchaseReq.User", "DepartmentId", "PurchaseReqV3.Department");
             DropForeignKey("PurchaseReq.User", "DivisionId", "PurchaseReq.Division");
+            DropForeignKey("PurchaseReq.User", "Department_Id", "PurchaseReqV3.Department");
+            DropForeignKey("PurchaseReq.User", "Division_Id", "PurchaseReq.Division");
             DropForeignKey("PurchaseReq.User", "Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("PurchaseReq.PurchaseRequisition", "Approver_Id", "PurchaseReq.User");
+            DropForeignKey("PurchaseReqV3.Department", "DepartmentHead_Id", "PurchaseReq.User");
+            DropForeignKey("PurchaseReq.Division", "DivisionHead_Id", "PurchaseReq.User");
             DropForeignKey("PurchaseReqV3.Campus", "CollegeId", "PurchaseReqV3.College");
+            DropIndex("PurchaseReq.User", new[] { "DepartmentId" });
             DropIndex("PurchaseReq.User", new[] { "DivisionId" });
+            DropIndex("PurchaseReq.User", new[] { "Department_Id" });
+            DropIndex("PurchaseReq.User", new[] { "Division_Id" });
             DropIndex("PurchaseReq.User", new[] { "Id" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("PurchaseReq.PurchaseRequisition", new[] { "Approver_Id" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
+            DropIndex("PurchaseReq.Division", new[] { "DivisionHead_Id" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
+            DropIndex("PurchaseReqV3.Department", new[] { "DepartmentHead_Id" });
             DropIndex("PurchaseReqV3.Campus", new[] { "CollegeId" });
             DropTable("PurchaseReq.User");
             DropTable("PurchaseReq.Vendor");
@@ -225,9 +250,9 @@ namespace PurchaseReqV3.Migrations
             DropTable("PurchaseReq.Item");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
+            DropTable("PurchaseReq.Division");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
-            DropTable("PurchaseReq.Division");
             DropTable("PurchaseReqV3.Department");
             DropTable("PurchaseReqV3.College");
             DropTable("PurchaseReqV3.Campus");
