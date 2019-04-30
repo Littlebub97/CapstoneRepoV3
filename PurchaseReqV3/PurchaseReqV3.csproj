@@ -204,19 +204,21 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PurchaseRequisitionsController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\UserBudgetCodesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201904301401389_Initial.cs" />
-    <Compile Include="Migrations\201904301401389_Initial.Designer.cs">
-      <DependentUpon>201904301401389_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201904301643074_Initial.cs" />
+    <Compile Include="Migrations\201904301643074_Initial.Designer.cs">
+      <DependentUpon>201904301643074_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Base.cs" />
     <Compile Include="Models\Budget.cs" />
     <Compile Include="Models\Campus.cs" />
+    <Compile Include="Models\UserBudgetCode.cs" />
     <Compile Include="Models\College.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Division.cs" />
@@ -326,6 +328,11 @@
     <Content Include="Views\Divisions\Details.cshtml" />
     <Content Include="Views\Divisions\Edit.cshtml" />
     <Content Include="Views\Divisions\Index.cshtml" />
+    <Content Include="Views\UserBudgetCodes\Create.cshtml" />
+    <Content Include="Views\UserBudgetCodes\Delete.cshtml" />
+    <Content Include="Views\UserBudgetCodes\Details.cshtml" />
+    <Content Include="Views\UserBudgetCodes\Edit.cshtml" />
+    <Content Include="Views\UserBudgetCodes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -344,8 +351,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904301401389_Initial.resx">
-      <DependentUpon>201904301401389_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904301643074_Initial.resx">
+      <DependentUpon>201904301643074_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

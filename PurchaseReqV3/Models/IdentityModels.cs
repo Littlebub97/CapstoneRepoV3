@@ -19,18 +19,19 @@ namespace PurchaseReqV3.Models
     }
 
 
-    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
+    public class ApplicationDbContext : IdentityDbContext<IdentityUser>//possibly change to our user class
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
-        }
+        }   
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
         public DbSet<Budget> Budget { get; set; }
+        public DbSet<UserBudgetCode> UserBudgetCode { get; set; }
         public DbSet<Campus> Campus { get; set; }
         public DbSet<College> College { get; set; }
         public DbSet<Department> Department { get; set; }
@@ -41,7 +42,6 @@ namespace PurchaseReqV3.Models
         public DbSet<User> User { get; set; }
         public DbSet<Vendor> Vendor { get; set; }
 
+        //public System.Data.Entity.DbSet<PurchaseReqV3.Models.UserBudgetCode> UserBudgetCodes { get; set; }
     }
-
-
 }

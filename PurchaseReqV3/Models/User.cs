@@ -32,10 +32,6 @@ namespace PurchaseReqV3.Models
             // Add custom user claims here
             return userIdentity;
         }
-        //Budget Code in User
-        //[InverseProperty(nameof(Division))]
-
-        public int? DivisionId { get; set; }
         public Division Division { get; set; }
 
         public int? DepartmentId { get; set; }

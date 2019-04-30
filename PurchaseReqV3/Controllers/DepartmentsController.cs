@@ -17,7 +17,8 @@ namespace PurchaseReqV3.Controllers
         // GET: Departments
         public ActionResult Index()
         {
-            return View(db.Department.ToList());
+            var department = db.Department.Include(d => d.DepartmentHead).Include(d => d.Divisions);
+            return View(department.ToList());
         }
 
         // GET: Departments/Details/5
@@ -38,6 +39,8 @@ namespace PurchaseReqV3.Controllers
         // GET: Departments/Create
         public ActionResult Create()
         {
+            ViewBag.UserId = new SelectList(db.Users, "Id", "Email");
+            ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name");
             return View();
         }
 
@@ -46,7 +49,7 @@ namespace PurchaseReqV3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name")] Department department)
+        public ActionResult Create([Bind(Include = "Id,Name,UserId,DivisionId")] Department department)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +58,8 @@ namespace PurchaseReqV3.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.UserId = new SelectList(db.Users, "Id", "Email", department.UserId);
+            ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name", department.DivisionId);
             return View(department);
         }
 
@@ -70,6 +75,8 @@ namespace PurchaseReqV3.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.UserId = new SelectList(db.Users, "Id", "Email", department.UserId);
+            ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name", department.DivisionId);
             return View(department);
         }
 
@@ -78,7 +85,7 @@ namespace PurchaseReqV3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name")] Department department)
+        public ActionResult Edit([Bind(Include = "Id,Name,UserId,DivisionId")] Department department)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +93,8 @@ namespace PurchaseReqV3.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.UserId = new SelectList(db.Users, "Id", "Email", department.UserId);
+            ViewBag.DivisionId = new SelectList(db.Division, "Id", "Name", department.DivisionId);
             return View(department);
         }
 

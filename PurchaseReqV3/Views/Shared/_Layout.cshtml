@@ -26,9 +26,11 @@
                 {
                     if (User.IsInRole("Admin"))
                     {
-                        @Html.ActionLink("Admin Page", "Index", "Account/Register", new { area = "" }, new { @class = "navbar-brand" })
-                        @Html.ActionLink("College Creation", "Index", "Colleges", new { area = "" }, new { @class = "navbar-brand" })
-                        @Html.ActionLink("Campus Creation", "Index", "Campus", new { area = "" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Users", "Index", "Account/Register", new { area = "" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Colleges", "Index", "Colleges", new { area = "" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Campus", "Index", "Campus", new { area = "" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Divisions", "Index", "Divisions", new { area = "" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Departments", "Index", "Departments", new { area = "" }, new { @class = "navbar-brand" })
                     }
                 }
 
@@ -37,6 +39,7 @@
                     if (User.IsInRole("CFO"))
                     {
                         @Html.ActionLink("Budget Manager", "Index", "Budgets", new { area = "" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("User Budgets", "Index", "UserBudgetCodes", new { area = "" }, new { @class = "navbar-brand" })
                     }
                 }
                 @if (User.Identity.IsAuthenticated)
@@ -44,7 +47,8 @@
                     if (User.IsInRole("State Auditor"))
                     {
                         @Html.ActionLink("Budgets", "Index", "Budgets", new { area = "" }, new { @class = "navbar-brand" })
-                        
+                        @Html.ActionLink("User Budgets", "Index", "UserBudgetCodes", new { area = "" }, new { @class = "navbar-brand" })
+
                     }
                 }
             </div>

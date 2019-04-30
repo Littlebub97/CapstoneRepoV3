@@ -17,7 +17,8 @@ namespace PurchaseReqV3.Controllers
         // GET: Divisions
         public ActionResult Index()
         {
-            return View(db.Division.ToList());
+            var division = db.Division.Include(d => d.DivisionChair);
+            return View(division.ToList());
         }
 
         // GET: Divisions/Details/5
@@ -38,6 +39,7 @@ namespace PurchaseReqV3.Controllers
         // GET: Divisions/Create
         public ActionResult Create()
         {
+            ViewBag.UserId = new SelectList(db.Users, "Id", "Email");
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace PurchaseReqV3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name")] Division division)
+        public ActionResult Create([Bind(Include = "Id,Name,UserId")] Division division)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +57,7 @@ namespace PurchaseReqV3.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.UserId = new SelectList(db.Users, "Id", "Email", division.UserId);
             return View(division);
         }
 
@@ -70,6 +73,7 @@ namespace PurchaseReqV3.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.UserId = new SelectList(db.Users, "Id", "Email", division.UserId);
             return View(division);
         }
 
@@ -78,7 +82,7 @@ namespace PurchaseReqV3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name")] Division division)
+        public ActionResult Edit([Bind(Include = "Id,Name,UserId")] Division division)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +90,7 @@ namespace PurchaseReqV3.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.UserId = new SelectList(db.Users, "Id", "Email", division.UserId);
             return View(division);
         }
 

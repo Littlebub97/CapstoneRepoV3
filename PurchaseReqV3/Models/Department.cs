@@ -13,7 +13,12 @@ namespace PurchaseReqV3.Models
 
         public ICollection<User> Users { get; set; }
 
+        public string UserId { get; set; }
+        [ForeignKey("UserId")]
         public User DepartmentHead { get; set; }
+
+        public int? DivisionId {get; set;}
+        public Division Divisions { get; set; }
         //public int? DepartmentHeadId { get; set; }
         //public User DepartmentHead { get; set; }
         //public int? DivisionId { get; set; }

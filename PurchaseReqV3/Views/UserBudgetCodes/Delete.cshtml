@@ -1,4 +1,4 @@
-﻿@model PurchaseReqV3.Models.Division
+﻿@model PurchaseReqV3.Models.UserBudgetCode
 
 @{
     ViewBag.Title = "Delete";
@@ -8,23 +8,23 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Division</h4>
+    <h4>UserBudgetCode</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.DivisionChair.Email)
+            @Html.DisplayNameFor(model => model.Budget.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DivisionChair.Email)
+            @Html.DisplayFor(model => model.Budget.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.User.Email)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.User.Email)
         </dd>
 
     </dl>
