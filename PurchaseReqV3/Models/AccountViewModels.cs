@@ -67,6 +67,10 @@ namespace PurchaseReqV3.Models
         [Display(Name = "UserRoles")]
         public string UserRoles { get; set; }
 
+        //[Required]
+        //[Display(Name ="Department")]
+        //public Department Department { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
@@ -83,10 +87,6 @@ namespace PurchaseReqV3.Models
         [Required]
         [Display(Name ="Last Name")]
         public string L_Name { get; set; }
-
-        [Required]
-        [Display(Name ="Department")]
-        public string Department { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

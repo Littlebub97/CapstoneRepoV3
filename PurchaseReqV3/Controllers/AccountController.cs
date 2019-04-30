@@ -149,6 +149,7 @@ namespace PurchaseReqV3.Controllers
         {
             ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin"))
                 .ToList(), "Name", "Name");
+           // ViewBag.Departments = new SelectList(context.Department, "DepartmentId", "DepartmentName");
             return View();
         }
 
@@ -174,7 +175,7 @@ namespace PurchaseReqV3.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                    //await this.UserManager.AddToRoleAsync(userId.Id, model.UserRoles);
+                    await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
                     //Ends here
                     return RedirectToAction("Successful_creation", "Account");
                 }
