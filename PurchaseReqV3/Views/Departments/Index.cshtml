@@ -4,21 +4,31 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<style>
+    tr:nth-child(even) {
+        background-color: gainsboro;
+    }
+
+    tr:nth-child(odd) {
+        background-color: lightsteelblue;
+    }
+</style>
+
+<h1>Departments in Purchase Requisition System</h1>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <h4>@Html.ActionLink("Create New", "Create")</h4>
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.DepartmentHead.Email)
+            <h4><b>Department Head</b></h4>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Divisions.Name)
+            <h4><b>Division</b></h4>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            <h4><b>Department</b></h4>
         </th>
         <th></th>
     </tr>
