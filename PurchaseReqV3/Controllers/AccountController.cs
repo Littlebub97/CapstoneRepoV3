@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -162,7 +164,7 @@ namespace PurchaseReqV3.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.UserName, Email = model.Email, F_name = model.F_Name, L_name = model.L_Name};
+                var user = new User { UserName = model.UserName, Email = model.Email, F_name = model.F_Name, L_name = model.L_Name, Active = model.Active, DateHired = model.DateHired};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 var userId = UserManager.FindByEmail(user.Email);
                 
@@ -252,6 +254,51 @@ namespace PurchaseReqV3.Controllers
         public ActionResult ResetPassword(string code)
         {
             return code == null ? View("Error") : View();
+        }
+
+        private ApplicationDbContext db = new ApplicationDbContext();
+        //Needs fixed
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User user = db.User.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+        //Needs fixed
+        [Authorize(Roles = "Admin")]
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User user = db.User.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+        //Needs fixed
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
+        public ActionResult Edit([Bind(Include = "Id,Email,F_name,L_Name,Active,DateHired,DateTerminated,UserRole")] User user)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(user);
         }
 
         //

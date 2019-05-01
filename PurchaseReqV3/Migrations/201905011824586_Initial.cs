@@ -3,7 +3,7 @@ namespace PurchaseReqV3.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initial : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -213,6 +213,9 @@ namespace PurchaseReqV3.Migrations
                         F_name = c.String(maxLength: 30),
                         L_name = c.String(maxLength: 30),
                         Address = c.String(maxLength: 100),
+                        Active = c.Boolean(nullable: false),
+                        DateHired = c.DateTime(nullable: false),
+                        DateTerminated = c.DateTime(),
                         DepartmentId = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)

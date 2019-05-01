@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace PurchaseReqV3.Models
@@ -87,6 +88,14 @@ namespace PurchaseReqV3.Models
         [Required]
         [Display(Name ="Last Name")]
         public string L_Name { get; set; }
+
+        [Required]
+        [Display(Name ="Active")]
+        public bool Active { get; set; }
+
+        [Required]
+        [Display(Name ="Date hired")]
+        public DateTime DateHired { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

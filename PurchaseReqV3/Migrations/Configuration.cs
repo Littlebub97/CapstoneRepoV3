@@ -43,7 +43,9 @@ namespace PurchaseReqV3.Migrations
                     F_name = "Bill",
                     L_name = "Admin",
                     Address = "address",
-                    PasswordHash = PasswordHash.HashPassword("Admin!123")
+                    PasswordHash = PasswordHash.HashPassword("Admin!123"),
+                    Active = true,
+                    DateHired = new DateTime(2019, 04, 20)
                 };
 
                 UserManager.Create(admin);
@@ -59,7 +61,9 @@ namespace PurchaseReqV3.Migrations
                     F_name = "Alice",
                     L_name = "CFO",
                     Address = "address",
-                    PasswordHash = PasswordHash.HashPassword("Alice!123")
+                    PasswordHash = PasswordHash.HashPassword("Alice!123"),
+                    Active = true,
+                    DateHired = new DateTime(2019, 04, 20)
                 };
 
                 UserManager.Create(CFO);
@@ -75,7 +79,9 @@ namespace PurchaseReqV3.Migrations
                     F_name = "Cheri",
                     L_name = "StateAuditor",
                     Address = "address",
-                    PasswordHash = PasswordHash.HashPassword("Cheri!123")
+                    PasswordHash = PasswordHash.HashPassword("Cheri!123"),
+                    Active = true,
+                    DateHired = new DateTime(2019, 04, 20)
                 };
 
                 UserManager.Create(StateAuditor);
@@ -91,7 +97,9 @@ namespace PurchaseReqV3.Migrations
                     F_name = "Steve",
                     L_name = "Employee",
                     Address = "address",
-                    PasswordHash = PasswordHash.HashPassword("Steve!123")
+                    PasswordHash = PasswordHash.HashPassword("Steve!123"),
+                    Active = true,
+                    DateHired = new DateTime(2019,04,20)
                 };
 
                 UserManager.Create(Employee);

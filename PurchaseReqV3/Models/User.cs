@@ -25,6 +25,12 @@ namespace PurchaseReqV3.Models
         [DataType(DataType.Text), MaxLength(100)]
         public string Address { get; set; }
 
+        public bool Active { get; set; }
+
+        public DateTime DateHired { get; set; }
+
+        public DateTime? DateTerminated { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
