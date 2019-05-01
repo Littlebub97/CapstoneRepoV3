@@ -4,35 +4,45 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<style>
+    tr:nth-child(even) {
+        background-color: gainsboro;
+    }
+
+    tr:nth-child(odd) {
+        background-color: lightsteelblue;
+    }
+</style>
+
+<h1>Budgets in Purchase Requisition System</h1>
 @if (!User.IsInRole("State Auditor"))
 {
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <h4>@Html.ActionLink("Create New", "Create")</h4>
 </p>
 }
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            <h4><b>Name</b></h4>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Type)
+            <h4><b>Type</b></h4>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Amount)
+            <h4><b>Amount</b></h4>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Status)
+            <h4><b>Status</b></h4>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DateCreated)
+            <h4><b>Start Date</b></h4>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DateEnded)
+            <h4><b>End Date</b></h4>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StateContract)
+            <h4><b>State</b></h4>
         </th>
         <th></th>
     </tr>
