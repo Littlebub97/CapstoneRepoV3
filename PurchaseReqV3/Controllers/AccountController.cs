@@ -164,7 +164,7 @@ namespace PurchaseReqV3.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.UserName, Email = model.Email, F_name = model.F_Name, L_name = model.L_Name, Active = model.Active, DateHired = model.DateHired};
+                var user = new User { UserName = model.UserName, Email = model.Email, F_name = model.F_Name, L_name = model.L_Name, Active = model.Active, DateHired = model.DateHired, DateTerminated = model.DateTerminated};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 var userId = UserManager.FindByEmail(user.Email);
                 

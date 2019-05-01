@@ -20,6 +20,10 @@ namespace PurchaseReqV3.Models
         [DataType(DataType.Currency)]
         public decimal? ActualPrice { get; set; }
 
+        public int PurchaseRequisitionId { get; set; }
+        public PurchaseRequisition PurchaseRequisition { get; set; }
+
+        public ICollection<Vendor> Vendors { get; set; }
         //Competing item 
     }
 }

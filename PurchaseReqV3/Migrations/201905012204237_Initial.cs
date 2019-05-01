@@ -138,8 +138,46 @@ namespace PurchaseReqV3.Migrations
                         UnitPrice = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Description = c.String(maxLength: 500),
                         ActualPrice = c.Decimal(precision: 18, scale: 2),
+                        PurchaseRequisitionId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("PurchaseReq.PurchaseRequisition", t => t.PurchaseRequisitionId, cascadeDelete: true)
+                .Index(t => t.PurchaseRequisitionId);
+            
+            CreateTable(
+                "PurchaseReq.PurchaseRequisition",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        UserId = c.String(maxLength: 128),
+                        Date = c.DateTime(nullable: false),
+                        CalculatedTotal = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Justification = c.String(maxLength: 500),
+                        ApprovalStatus = c.Int(nullable: false),
+                        Approver_Id = c.String(maxLength: 128),
+                        PurchaseRequisition_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("PurchaseReq.User", t => t.Approver_Id)
+                .ForeignKey("PurchaseReq.PurchaseRequisition", t => t.PurchaseRequisition_Id)
+                .ForeignKey("PurchaseReq.User", t => t.UserId)
+                .Index(t => t.UserId)
+                .Index(t => t.Approver_Id)
+                .Index(t => t.PurchaseRequisition_Id);
+            
+            CreateTable(
+                "PurchaseReq.Vendor",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(maxLength: 50),
+                        Phone = c.String(),
+                        URL = c.String(),
+                        ItemId = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("PurchaseReq.Item", t => t.ItemId)
+                .Index(t => t.ItemId);
             
             CreateTable(
                 "PurchaseReq.JobRole",
@@ -152,20 +190,6 @@ namespace PurchaseReqV3.Migrations
                         UserID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "PurchaseReq.PurchaseRequisition",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Date = c.DateTime(nullable: false),
-                        CalculatedTotal = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        Justification = c.String(maxLength: 500),
-                        Approver_Id = c.String(maxLength: 128),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("PurchaseReq.User", t => t.Approver_Id)
-                .Index(t => t.Approver_Id);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -192,23 +216,13 @@ namespace PurchaseReqV3.Migrations
                 .Index(t => t.BudgetId);
             
             CreateTable(
-                "PurchaseReq.Vendor",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(maxLength: 50),
-                        Phone = c.String(),
-                        URL = c.String(),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
                 "PurchaseReq.User",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
                         Division_Id = c.Int(),
                         Division_Id1 = c.Int(),
+                        User_Id = c.String(maxLength: 128),
                         Department_Id = c.Int(),
                         F_name = c.String(maxLength: 30),
                         L_name = c.String(maxLength: 30),
@@ -222,11 +236,13 @@ namespace PurchaseReqV3.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.Id)
                 .ForeignKey("PurchaseReq.Division", t => t.Division_Id)
                 .ForeignKey("PurchaseReq.Division", t => t.Division_Id1)
+                .ForeignKey("PurchaseReq.User", t => t.User_Id)
                 .ForeignKey("PurchaseReqV3.Department", t => t.Department_Id)
                 .ForeignKey("PurchaseReqV3.Department", t => t.DepartmentId)
                 .Index(t => t.Id)
                 .Index(t => t.Division_Id)
                 .Index(t => t.Division_Id1)
+                .Index(t => t.User_Id)
                 .Index(t => t.Department_Id)
                 .Index(t => t.DepartmentId);
             
@@ -236,6 +252,7 @@ namespace PurchaseReqV3.Migrations
         {
             DropForeignKey("PurchaseReq.User", "DepartmentId", "PurchaseReqV3.Department");
             DropForeignKey("PurchaseReq.User", "Department_Id", "PurchaseReqV3.Department");
+            DropForeignKey("PurchaseReq.User", "User_Id", "PurchaseReq.User");
             DropForeignKey("PurchaseReq.User", "Division_Id1", "PurchaseReq.Division");
             DropForeignKey("PurchaseReq.User", "Division_Id", "PurchaseReq.Division");
             DropForeignKey("PurchaseReq.User", "Id", "dbo.AspNetUsers");
@@ -245,6 +262,10 @@ namespace PurchaseReqV3.Migrations
             DropForeignKey("dbo.UserBudgetCodes", "UserId", "PurchaseReq.User");
             DropForeignKey("dbo.UserBudgetCodes", "BudgetId", "PurchaseReqV3.Budget");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("PurchaseReq.Vendor", "ItemId", "PurchaseReq.Item");
+            DropForeignKey("PurchaseReq.Item", "PurchaseRequisitionId", "PurchaseReq.PurchaseRequisition");
+            DropForeignKey("PurchaseReq.PurchaseRequisition", "UserId", "PurchaseReq.User");
+            DropForeignKey("PurchaseReq.PurchaseRequisition", "PurchaseRequisition_Id", "PurchaseReq.PurchaseRequisition");
             DropForeignKey("PurchaseReq.PurchaseRequisition", "Approver_Id", "PurchaseReq.User");
             DropForeignKey("PurchaseReqV3.Department", "UserId", "PurchaseReq.User");
             DropForeignKey("PurchaseReq.Division", "UserId", "PurchaseReq.User");
@@ -252,13 +273,18 @@ namespace PurchaseReqV3.Migrations
             DropForeignKey("PurchaseReqV3.Campus", "CollegeId", "PurchaseReqV3.College");
             DropIndex("PurchaseReq.User", new[] { "DepartmentId" });
             DropIndex("PurchaseReq.User", new[] { "Department_Id" });
+            DropIndex("PurchaseReq.User", new[] { "User_Id" });
             DropIndex("PurchaseReq.User", new[] { "Division_Id1" });
             DropIndex("PurchaseReq.User", new[] { "Division_Id" });
             DropIndex("PurchaseReq.User", new[] { "Id" });
             DropIndex("dbo.UserBudgetCodes", new[] { "BudgetId" });
             DropIndex("dbo.UserBudgetCodes", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("PurchaseReq.Vendor", new[] { "ItemId" });
+            DropIndex("PurchaseReq.PurchaseRequisition", new[] { "PurchaseRequisition_Id" });
             DropIndex("PurchaseReq.PurchaseRequisition", new[] { "Approver_Id" });
+            DropIndex("PurchaseReq.PurchaseRequisition", new[] { "UserId" });
+            DropIndex("PurchaseReq.Item", new[] { "PurchaseRequisitionId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
@@ -269,11 +295,11 @@ namespace PurchaseReqV3.Migrations
             DropIndex("PurchaseReqV3.Department", new[] { "UserId" });
             DropIndex("PurchaseReqV3.Campus", new[] { "CollegeId" });
             DropTable("PurchaseReq.User");
-            DropTable("PurchaseReq.Vendor");
             DropTable("dbo.UserBudgetCodes");
             DropTable("dbo.AspNetRoles");
-            DropTable("PurchaseReq.PurchaseRequisition");
             DropTable("PurchaseReq.JobRole");
+            DropTable("PurchaseReq.Vendor");
+            DropTable("PurchaseReq.PurchaseRequisition");
             DropTable("PurchaseReq.Item");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");

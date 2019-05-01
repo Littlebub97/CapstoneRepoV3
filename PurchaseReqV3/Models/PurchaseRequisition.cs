@@ -10,6 +10,11 @@ namespace PurchaseReqV3.Models
     [Table("PurchaseRequisition", Schema = "PurchaseReq")]
     public class PurchaseRequisition : Base
     { 
+        public string UserId { get; set; }
+        public User User { get; set; }
+
+        public ICollection<Item> Items { get; set; }
+
         //Foreign key to user
         public DateTime Date { get; set; }
 
@@ -19,7 +24,9 @@ namespace PurchaseReqV3.Models
         [DataType(DataType.Text), MaxLength(500)]
         public string Justification { get; set; }
 
-        public enum Status { Approved, Rejected, Cancelled, Shipped, CannotProcess, Delivered, Processing }
+        public enum APPROVALSTATUS { Approved, Rejected, Cancelled, Shipped, CannotProcess, Delivered, Processing }
+
+        public APPROVALSTATUS ApprovalStatus { get; set; }
 
         public User Approver { get; set; }
 
