@@ -42,5 +42,8 @@ namespace PurchaseReqV3.Models
 
         public int? DepartmentId { get; set; }
         public Department Department { get; set; }
+
+        
+        public ICollection<User> Users { get; set; }
     }
 }

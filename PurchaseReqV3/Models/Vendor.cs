@@ -17,5 +17,8 @@ namespace PurchaseReqV3.Models
         public string Phone { get; set; }
 
         public string URL { get; set; }
+
+        public int? ItemId { get; set; }
+        public Item Item { get; set; }
     }
 }

@@ -26,7 +26,7 @@ namespace PurchaseReqV3.Migrations
                 new IdentityRole { Name = "CFO" },
                 new IdentityRole { Name = "President" },
                 new IdentityRole { Name = "Student Dean"},
-                new IdentityRole { Name = "Academin Division Chair" },
+                new IdentityRole { Name = "Academic Division Chair" },
                 new IdentityRole { Name = "Purchasing staff" },
                 new IdentityRole { Name = "Academic Department Head" },
                 new IdentityRole { Name = "Maintenance Division Head" },
@@ -43,6 +43,7 @@ namespace PurchaseReqV3.Migrations
                     F_name = "Bill",
                     L_name = "Admin",
                     Address = "address",
+                  //PhoneNumber= "304-486-6654",
                     PasswordHash = PasswordHash.HashPassword("Admin!123"),
                     Active = true,
                     DateHired = new DateTime(2019, 04, 20)

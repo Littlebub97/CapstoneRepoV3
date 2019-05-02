@@ -17,7 +17,8 @@ namespace PurchaseReqV3.Controllers
         // GET: PurchaseRequisitions
         public ActionResult Index()
         {
-            return View(db.PurchaseRequisition.ToList());
+            var purchaseRequisition = db.PurchaseRequisition.Include(p => p.User);
+            return View(purchaseRequisition.ToList());
         }
 
         // GET: PurchaseRequisitions/Details/5
@@ -38,6 +39,7 @@ namespace PurchaseReqV3.Controllers
         // GET: PurchaseRequisitions/Create
         public ActionResult Create()
         {
+            ViewBag.UserId = new SelectList(db.Users, "Id", "Email");
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace PurchaseReqV3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Date,CalculatedTotal,Justification")] PurchaseRequisition purchaseRequisition)
+        public ActionResult Create([Bind(Include = "Id,UserId,Date,CalculatedTotal,Justification,ApprovalStatus")] PurchaseRequisition purchaseRequisition)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +57,7 @@ namespace PurchaseReqV3.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.UserId = new SelectList(db.Users, "Id", "Email", purchaseRequisition.UserId);
             return View(purchaseRequisition);
         }
 
@@ -70,6 +73,7 @@ namespace PurchaseReqV3.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.UserId = new SelectList(db.Users, "Id", "Email", purchaseRequisition.UserId);
             return View(purchaseRequisition);
         }
 
@@ -78,7 +82,7 @@ namespace PurchaseReqV3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Date,CalculatedTotal,Justification")] PurchaseRequisition purchaseRequisition)
+        public ActionResult Edit([Bind(Include = "Id,UserId,Date,CalculatedTotal,Justification,ApprovalStatus")] PurchaseRequisition purchaseRequisition)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +90,7 @@ namespace PurchaseReqV3.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.UserId = new SelectList(db.Users, "Id", "Email", purchaseRequisition.UserId);
             return View(purchaseRequisition);
         }
 

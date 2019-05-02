@@ -14,7 +14,7 @@ namespace PurchaseReqV3.Models
         public string CollegeName { get; set; }
 
         //Many campuses
-        public List<Campus> campuses { get; set; }
+        public List<Campus> Campuses { get; set; }
         //comment
     }
 }
