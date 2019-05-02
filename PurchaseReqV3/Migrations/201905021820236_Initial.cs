@@ -13,12 +13,11 @@ namespace PurchaseReqV3.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(maxLength: 50),
-                        Type = c.String(maxLength: 50),
+                        Type = c.Int(nullable: false),
                         Amount = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Status = c.Int(nullable: false),
                         DateCreated = c.DateTime(nullable: false),
                         DateEnded = c.DateTime(),
-                        StateContract = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             

@@ -67,9 +67,6 @@
         <td>
             @Html.DisplayFor(modelItem => item.DateEnded)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StateContract)
-        </td>
         @if (!User.IsInRole("State Auditor"))
         {
         <td>

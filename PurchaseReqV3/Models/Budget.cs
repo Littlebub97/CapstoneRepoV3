@@ -13,8 +13,9 @@ namespace PurchaseReqV3.Models
         [DataType(DataType.Text), MaxLength(50)]
         public string Name { get; set; }
 
-        [DataType(DataType.Text), MaxLength(50)]
-        public string Type { get; set; }
+        public enum TYPE { Annual, NonExpiring, Grant  }
+        
+        public TYPE Type { get; set; }
 
         [DataType(DataType.Currency)]
         public decimal Amount { get; set; }
@@ -27,8 +28,5 @@ namespace PurchaseReqV3.Models
 
         public DateTime? DateEnded { get; set; }
 
-        public bool StateContract { get; set; }
-
-        
     }
 }
