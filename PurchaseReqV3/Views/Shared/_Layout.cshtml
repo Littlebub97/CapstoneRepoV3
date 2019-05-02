@@ -52,6 +52,15 @@
 
                     }
                 }
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("Employee"))
+                    {
+                        @Html.ActionLink("Create a Purchase Requisition", "Index", "PurchaseRequisitions", new { area = "" }, new { @class = "navbar-brand" })
+                    }
+                }
+
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">

@@ -10,118 +10,112 @@ using PurchaseReqV3.Models;
 
 namespace PurchaseReqV3.Controllers
 {
-    public class PurchaseRequisitionsController : Controller
+    public class ItemsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: PurchaseRequisitions
-        [Authorize(Roles ="Employee")]
+        // GET: Items
         public ActionResult Index()
         {
-            var purchaseRequisition = db.PurchaseRequisition.Include(p => p.User);
-            return View(purchaseRequisition.ToList());
+            var item = db.Item.Include(i => i.PurchaseRequisition);
+            return View(item.ToList());
         }
 
-        // GET: PurchaseRequisitions/Details/5
-        [Authorize(Roles = "Employee")]
+        // GET: Items/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PurchaseRequisition purchaseRequisition = db.PurchaseRequisition.Find(id);
-            if (purchaseRequisition == null)
+            Item item = db.Item.Find(id);
+            if (item == null)
             {
                 return HttpNotFound();
             }
-            return View(purchaseRequisition);
+            return View(item);
         }
 
-        // GET: PurchaseRequisitions/Create
-        [Authorize(Roles = "Employee")]
+        // GET: Items/Create
         public ActionResult Create()
         {
-            ViewBag.UserId = new SelectList(db.Users, "Id", "Email");
+            ViewBag.PurchaseRequisitionId = new SelectList(db.PurchaseRequisition, "Id", "UserId");
             return View();
         }
 
-        // POST: PurchaseRequisitions/Create
+        // POST: Items/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Employee")]
-        public ActionResult Create([Bind(Include = "Id,UserId,Date,CalculatedTotal,Justification,ApprovalStatus")] PurchaseRequisition purchaseRequisition)
+        public ActionResult Create([Bind(Include = "Id,UnitPrice,Description,ActualPrice,PurchaseRequisitionId")] Item item)
         {
             if (ModelState.IsValid)
             {
-                db.PurchaseRequisition.Add(purchaseRequisition);
+                db.Item.Add(item);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.UserId = new SelectList(db.Users, "Id", "Email", purchaseRequisition.UserId);
-            return View(purchaseRequisition);
+            ViewBag.PurchaseRequisitionId = new SelectList(db.PurchaseRequisition, "Id", "UserId", item.PurchaseRequisitionId);
+            return View(item);
         }
 
-        // GET: PurchaseRequisitions/Edit/5
+        // GET: Items/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PurchaseRequisition purchaseRequisition = db.PurchaseRequisition.Find(id);
-            if (purchaseRequisition == null)
+            Item item = db.Item.Find(id);
+            if (item == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.UserId = new SelectList(db.Users, "Id", "Email", purchaseRequisition.UserId);
-            return View(purchaseRequisition);
+            ViewBag.PurchaseRequisitionId = new SelectList(db.PurchaseRequisition, "Id", "UserId", item.PurchaseRequisitionId);
+            return View(item);
         }
 
-        // POST: PurchaseRequisitions/Edit/5
+        // POST: Items/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,UserId,Date,CalculatedTotal,Justification,ApprovalStatus")] PurchaseRequisition purchaseRequisition)
+        public ActionResult Edit([Bind(Include = "Id,UnitPrice,Description,ActualPrice,PurchaseRequisitionId")] Item item)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(purchaseRequisition).State = EntityState.Modified;
+                db.Entry(item).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.UserId = new SelectList(db.Users, "Id", "Email", purchaseRequisition.UserId);
-            return View(purchaseRequisition);
+            ViewBag.PurchaseRequisitionId = new SelectList(db.PurchaseRequisition, "Id", "UserId", item.PurchaseRequisitionId);
+            return View(item);
         }
 
-        // GET: PurchaseRequisitions/Delete/5
-        [Authorize(Roles = "Employee")]
+        // GET: Items/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PurchaseRequisition purchaseRequisition = db.PurchaseRequisition.Find(id);
-            if (purchaseRequisition == null)
+            Item item = db.Item.Find(id);
+            if (item == null)
             {
                 return HttpNotFound();
             }
-            return View(purchaseRequisition);
+            return View(item);
         }
 
-        // POST: PurchaseRequisitions/Delete/5
+        // POST: Items/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Employee")]
         public ActionResult DeleteConfirmed(int id)
         {
-            PurchaseRequisition purchaseRequisition = db.PurchaseRequisition.Find(id);
-            db.PurchaseRequisition.Remove(purchaseRequisition);
+            Item item = db.Item.Find(id);
+            db.Item.Remove(item);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

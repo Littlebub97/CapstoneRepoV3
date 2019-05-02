@@ -38,7 +38,7 @@ namespace PurchaseReqV3.Migrations
                 new IdentityRole { Name = "Vice President, Finance and Administration" },
                 new IdentityRole { Name = "Director, Business Services" },
                 new IdentityRole { Name = "Director, Human Resources" },
-                new IdentityRole { Name = "Director, Facility and Grounds" },
+                new IdentityRole { Name = "Director, Facility, and Grounds" },
                 new IdentityRole { Name = "Campus Police Officer, Lead" },
                 new IdentityRole { Name = "Chief Information Officer" },
                 new IdentityRole { Name = "Director, Institutional Research" },
@@ -50,8 +50,8 @@ namespace PurchaseReqV3.Migrations
                 new IdentityRole { Name = "BTG Program Coordinator, Sector Partnerships" },
 
                 new IdentityRole { Name = "Vice President, Acedemic Affairs" },
-                new IdentityRole { Name = "Dean Acedemic Affairs" },
-                new IdentityRole { Name = "Dean Jackson County Center" },
+                new IdentityRole { Name = "Dean, Academic Affairs" },
+                new IdentityRole { Name = "Dean, Jackson County Center" },
                 new IdentityRole { Name = "Chair Business, Accounting, and Public Services" },
                 new IdentityRole { Name = "Chair Education" },
                 new IdentityRole { Name = "Chair Health Sciences" },
@@ -59,7 +59,7 @@ namespace PurchaseReqV3.Migrations
                 new IdentityRole { Name = "Chair Humanities, Fine Arts and Social Sciences" },
                 new IdentityRole { Name = "Professional Technologist to Online Learning" },
                 new IdentityRole { Name = "Chair Science, Technology, Engineering, and Math" },
-                new IdentityRole { Name = "Director Library" },
+                new IdentityRole { Name = "Director, Library" },
 
                 new IdentityRole { Name = "Vice President, Student Services" },
                 new IdentityRole { Name = "Executive Director, Enrollment" },
@@ -72,7 +72,6 @@ namespace PurchaseReqV3.Migrations
                 new IdentityRole { Name = "Admin" },
                 new IdentityRole { Name = "Employee" },
                 new IdentityRole { Name = "CFO" },
-                new IdentityRole { Name = "President" },
                 new IdentityRole { Name = "Student Dean"},
                 new IdentityRole { Name = "Academic Division Chair" },
                 new IdentityRole { Name = "Purchasing staff" },
@@ -211,7 +210,7 @@ namespace PurchaseReqV3.Migrations
                     DateHired = new DateTime(2019, 04, 20)
                 };
                 UserManager.Create(Special_Assistant_to_the_President_Policy_and_Social_Justice);
-                UserManager.AddToRole(Special_Assistant_to_the_President_Policy_and_Social_Justice.Id, "Special Assistant to the President, Policy and Social Justice");
+                UserManager.AddToRole(Special_Assistant_to_the_President_Policy_and_Social_Justice.Id, "Special Assistant to the President, Policy, and Social Justice");
             }
 
             //Adding Vice President Finance and Administration
@@ -287,7 +286,7 @@ namespace PurchaseReqV3.Migrations
                     DateHired = new DateTime(2019, 04, 20)
                 };
                 UserManager.Create(Director_Facilities_and_Grounds);
-                UserManager.AddToRole(Director_Facilities_and_Grounds.Id, "Director, Facilities and Grounds");
+                UserManager.AddToRole(Director_Facilities_and_Grounds.Id, "Director, Facility, and Grounds");
             }
 
             //Adding Campus Police Officer, Lead
@@ -477,7 +476,7 @@ namespace PurchaseReqV3.Migrations
                     DateHired = new DateTime(2019, 04, 20)
                 };
                 UserManager.Create(Dean_Acedemic_Affairs);
-                UserManager.AddToRole(Dean_Acedemic_Affairs.Id, "Dean, Acedemic Affairs");
+                UserManager.AddToRole(Dean_Acedemic_Affairs.Id, "Dean, Academic Affairs");
             }
 
             //Adding Dean, Jackson County Center
@@ -495,7 +494,7 @@ namespace PurchaseReqV3.Migrations
                     Active = true,
                     DateHired = new DateTime(2019, 04, 20)
                 };
-                UserManager.Create(Dean_Jackson_County_Center;
+                UserManager.Create(Dean_Jackson_County_Center);
                 UserManager.AddToRole(Dean_Jackson_County_Center.Id, "Dean, Jackson County Center");
             }
 
@@ -629,7 +628,7 @@ namespace PurchaseReqV3.Migrations
                     DateHired = new DateTime(2019, 04, 20)
                 };
                 UserManager.Create(Chair_Science_Technology_Engineering_and_Math);
-                UserManager.AddToRole(Chair_Science_Technology_Engineering_and_Math.Id, "Chair Science, Technology, Engineering and Math");
+                UserManager.AddToRole(Chair_Science_Technology_Engineering_and_Math.Id, "Chair Science, Technology, Engineering, and Math");
             }
 
             //Adding Director, Library

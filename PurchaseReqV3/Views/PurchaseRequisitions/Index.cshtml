@@ -46,10 +46,19 @@
         <td>
             @Html.DisplayFor(modelItem => item.ApprovalStatus)
         </td>
+        @if (!User.IsInRole("Employee"))
+        {
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+        </td>
+        }
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>
+        <td>
+            @Html.ActionLink("Items", "Index", "Items", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Vendors", "Index", "Vendors", new { area = "" }, new { @class = "navbar-brand" })
         </td>
     </tr>
 }
