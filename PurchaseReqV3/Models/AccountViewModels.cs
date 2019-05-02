@@ -68,9 +68,9 @@ namespace PurchaseReqV3.Models
         [Display(Name = "UserRoles")]
         public string UserRoles { get; set; }
 
-        //[Required]
-        //[Display(Name ="Department")]
-        //public Department Department { get; set; }
+        [Required]
+        [Display(Name ="Department")]
+        public Department Department { get; set; }
 
         [Required]
         [EmailAddress]
