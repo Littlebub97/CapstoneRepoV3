@@ -10,112 +10,107 @@ using PurchaseReqV3.Models;
 
 namespace PurchaseReqV3.Controllers
 {
-    public class PurchaseRequisitionsController : Controller
+    public class AddressesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: PurchaseRequisitions
+        // GET: Addresses
         public ActionResult Index()
         {
-            var purchaseRequisition = db.PurchaseRequisition.Include(p => p.User);
-            return View(purchaseRequisition.ToList());
+            return View(db.Address.ToList());
         }
 
-        // GET: PurchaseRequisitions/Details/5
+        // GET: Addresses/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PurchaseRequisition purchaseRequisition = db.PurchaseRequisition.Find(id);
-            if (purchaseRequisition == null)
+            Address address = db.Address.Find(id);
+            if (address == null)
             {
                 return HttpNotFound();
             }
-            return View(purchaseRequisition);
+            return View(address);
         }
 
-        // GET: PurchaseRequisitions/Create
+        // GET: Addresses/Create
         public ActionResult Create()
         {
-            ViewBag.UserId = new SelectList(db.Users, "Id", "Email");
             return View();
         }
 
-        // POST: PurchaseRequisitions/Create
+        // POST: Addresses/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,UserId,Date,Justification,ApprovalStatus")] PurchaseRequisition purchaseRequisition)
+        public ActionResult Create([Bind(Include = "Id,Country,City,State,ZipCode,Street")] Address address)
         {
             if (ModelState.IsValid)
             {
-                db.PurchaseRequisition.Add(purchaseRequisition);
+                db.Address.Add(address);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.UserId = new SelectList(db.Users, "Id", "Email", purchaseRequisition.UserId);
-            return View(purchaseRequisition);
+            return View(address);
         }
 
-        // GET: PurchaseRequisitions/Edit/5
+        // GET: Addresses/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PurchaseRequisition purchaseRequisition = db.PurchaseRequisition.Find(id);
-            if (purchaseRequisition == null)
+            Address address = db.Address.Find(id);
+            if (address == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.UserId = new SelectList(db.Users, "Id", "Email", purchaseRequisition.UserId);
-            return View(purchaseRequisition);
+            return View(address);
         }
 
-        // POST: PurchaseRequisitions/Edit/5
+        // POST: Addresses/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,UserId,Date,Justification,ApprovalStatus")] PurchaseRequisition purchaseRequisition)
+        public ActionResult Edit([Bind(Include = "Id,Country,City,State,ZipCode,Street")] Address address)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(purchaseRequisition).State = EntityState.Modified;
+                db.Entry(address).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.UserId = new SelectList(db.Users, "Id", "Email", purchaseRequisition.UserId);
-            return View(purchaseRequisition);
+            return View(address);
         }
 
-        // GET: PurchaseRequisitions/Delete/5
+        // GET: Addresses/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PurchaseRequisition purchaseRequisition = db.PurchaseRequisition.Find(id);
-            if (purchaseRequisition == null)
+            Address address = db.Address.Find(id);
+            if (address == null)
             {
                 return HttpNotFound();
             }
-            return View(purchaseRequisition);
+            return View(address);
         }
 
-        // POST: PurchaseRequisitions/Delete/5
+        // POST: Addresses/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            PurchaseRequisition purchaseRequisition = db.PurchaseRequisition.Find(id);
-            db.PurchaseRequisition.Remove(purchaseRequisition);
+            Address address = db.Address.Find(id);
+            db.Address.Remove(address);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

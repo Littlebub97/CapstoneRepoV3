@@ -11,6 +11,10 @@ namespace PurchaseReqV3.Models
     [Table("Item", Schema = "PurchaseReq")]
     public class Item : Base
     {
+        public string Name { get; set; }
+
+        public int Quantity { get; set; }
+
         [DataType(DataType.Currency)]
         public decimal UnitPrice { get; set; }
 

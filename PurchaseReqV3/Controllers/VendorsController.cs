@@ -17,7 +17,7 @@ namespace PurchaseReqV3.Controllers
         // GET: Vendors
         public ActionResult Index()
         {
-            var vendor = db.Vendor.Include(v => v.Item);
+            var vendor = db.Vendor.Include(v => v.Address).Include(v => v.Item);
             return View(vendor.ToList());
         }
 
@@ -39,7 +39,8 @@ namespace PurchaseReqV3.Controllers
         // GET: Vendors/Create
         public ActionResult Create()
         {
-            ViewBag.ItemId = new SelectList(db.Item, "Id", "Description");
+            ViewBag.AddressId = new SelectList(db.Address, "Id", "Country");
+            ViewBag.ItemId = new SelectList(db.Item, "Id", "Name");
             return View();
         }
 
@@ -48,7 +49,7 @@ namespace PurchaseReqV3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Phone,URL,ItemId")] Vendor vendor)
+        public ActionResult Create([Bind(Include = "Id,Name,Phone,ItemId,StateContract,AddressId")] Vendor vendor)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +58,8 @@ namespace PurchaseReqV3.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ItemId = new SelectList(db.Item, "Id", "Description", vendor.ItemId);
+            ViewBag.AddressId = new SelectList(db.Address, "Id", "Country", vendor.AddressId);
+            ViewBag.ItemId = new SelectList(db.Item, "Id", "Name", vendor.ItemId);
             return View(vendor);
         }
 
@@ -73,7 +75,8 @@ namespace PurchaseReqV3.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ItemId = new SelectList(db.Item, "Id", "Description", vendor.ItemId);
+            ViewBag.AddressId = new SelectList(db.Address, "Id", "Country", vendor.AddressId);
+            ViewBag.ItemId = new SelectList(db.Item, "Id", "Name", vendor.ItemId);
             return View(vendor);
         }
 
@@ -82,7 +85,7 @@ namespace PurchaseReqV3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Phone,URL,ItemId")] Vendor vendor)
+        public ActionResult Edit([Bind(Include = "Id,Name,Phone,ItemId,StateContract,AddressId")] Vendor vendor)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +93,8 @@ namespace PurchaseReqV3.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ItemId = new SelectList(db.Item, "Id", "Description", vendor.ItemId);
+            ViewBag.AddressId = new SelectList(db.Address, "Id", "Country", vendor.AddressId);
+            ViewBag.ItemId = new SelectList(db.Item, "Id", "Name", vendor.ItemId);
             return View(vendor);
         }
 

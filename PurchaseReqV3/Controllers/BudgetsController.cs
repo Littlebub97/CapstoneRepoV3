@@ -92,7 +92,7 @@ namespace PurchaseReqV3.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles ="CFO")]
-        public ActionResult Edit([Bind(Include = "Id,Name,Type,Amount,Status,DateCreated,DateEnded,StateContract")] Budget budget)
+        public ActionResult Edit([Bind(Include = "Id,Name,Type,Amount,Status,DateCreated,DateEnded")] Budget budget)
         {
             if (ModelState.IsValid)
             {

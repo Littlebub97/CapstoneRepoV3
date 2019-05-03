@@ -13,10 +13,8 @@ namespace PurchaseReqV3.Models
         [StringLength(50)]
         public string Name { get; set; }
 
-        //Consider changing the length
-        //Consider making a model
-        [StringLength(100)]
-        public string Address { get; set; }
+        public int? AddressId { get; set; }
+        public Address Address { get; set; }
 
         //One college
         public int? CollegeId { get; set; }

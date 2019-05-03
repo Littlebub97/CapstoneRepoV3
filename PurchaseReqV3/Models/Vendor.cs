@@ -16,9 +16,12 @@ namespace PurchaseReqV3.Models
         [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; }
 
-        public string URL { get; set; }
-
         public int ItemId { get; set; }
         public Item Item { get; set; }
+
+        public bool StateContract { get; set; }
+
+        public int? AddressId { get; set; }
+        public Address Address { get; set; }
     }
 }
