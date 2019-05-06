@@ -86,12 +86,15 @@ namespace PurchaseReqV3.Migrations
                         Date = c.DateTime(nullable: false),
                         Justification = c.String(maxLength: 500),
                         ApprovalStatus = c.Int(nullable: false),
+                        BudgetId = c.Int(),
                         Approver_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("PurchaseReq.User", t => t.Approver_Id)
+                .ForeignKey("PurchaseReqV3.Budget", t => t.BudgetId)
                 .ForeignKey("PurchaseReq.User", t => t.UserId)
                 .Index(t => t.UserId)
+                .Index(t => t.BudgetId)
                 .Index(t => t.Approver_Id);
             
             CreateTable(
@@ -280,6 +283,7 @@ namespace PurchaseReqV3.Migrations
             DropForeignKey("PurchaseReq.Vendor", "ItemId", "PurchaseReq.Item");
             DropForeignKey("PurchaseReq.PurchaseRequisition", "UserId", "PurchaseReq.User");
             DropForeignKey("PurchaseReq.Item", "PurchaseRequisitionId", "PurchaseReq.PurchaseRequisition");
+            DropForeignKey("PurchaseReq.PurchaseRequisition", "BudgetId", "PurchaseReqV3.Budget");
             DropForeignKey("PurchaseReq.PurchaseRequisition", "Approver_Id", "PurchaseReq.User");
             DropForeignKey("PurchaseReq.Division", "UserId", "PurchaseReq.User");
             DropForeignKey("PurchaseReqV3.Department", "DivisionId", "PurchaseReq.Division");
@@ -305,6 +309,7 @@ namespace PurchaseReqV3.Migrations
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("PurchaseReq.PurchaseRequisition", new[] { "Approver_Id" });
+            DropIndex("PurchaseReq.PurchaseRequisition", new[] { "BudgetId" });
             DropIndex("PurchaseReq.PurchaseRequisition", new[] { "UserId" });
             DropIndex("PurchaseReq.Item", new[] { "PurchaseRequisitionId" });
             DropIndex("PurchaseReq.Vendor", new[] { "AddressId" });

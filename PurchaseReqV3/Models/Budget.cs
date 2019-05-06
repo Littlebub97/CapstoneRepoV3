@@ -29,5 +29,6 @@ namespace PurchaseReqV3.Models
 
         public DateTime? DateEnded { get; set; }
 
+        public ICollection<PurchaseRequisition> PurchaseRequisitions { get; set; }
     }
 }

@@ -29,6 +29,8 @@ namespace PurchaseReqV3.Models
 
         public User Approver { get; set; }
 
+        public int? BudgetId { get; set; }
+        public Budget Budgets { get; set; }
         //Multiple Approvers
     }
 
