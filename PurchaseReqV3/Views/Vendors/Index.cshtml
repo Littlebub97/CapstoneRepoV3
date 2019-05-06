@@ -15,6 +15,18 @@
             @Html.DisplayNameFor(model => model.Address.Country)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Address.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address.State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address.Street)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address.ZipCode)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Item.Name)
         </th>
         <th>
@@ -35,6 +47,18 @@
             @Html.DisplayFor(modelItem => item.Address.Country)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Address.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address.State)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address.Street)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address.ZipCode)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Item.Name)
         </td>
         <td>
@@ -47,9 +71,9 @@
             @Html.DisplayFor(modelItem => item.StateContract)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
         </td>
     </tr>
 }

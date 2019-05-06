@@ -13,8 +13,6 @@ namespace PurchaseReqV3.Models
         public string UserId { get; set; }
         public User User { get; set; }
 
-        public ICollection<Item> Items { get; set; }
-
         public DateTime Date { get; set; }
 
         //[DataType(DataType.Currency)]
@@ -22,6 +20,8 @@ namespace PurchaseReqV3.Models
 
         [DataType(DataType.Text), MaxLength(500)]
         public string Justification { get; set; }
+
+        public ICollection<Item> Items { get; set; }
 
         public enum APPROVALSTATUS { Approved, Rejected, Cancelled, Shipped, CannotProcess, Delivered, Processing }
 

@@ -12,11 +12,11 @@ namespace PurchaseReqV3.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Country = c.String(),
-                        City = c.String(),
-                        State = c.String(),
-                        ZipCode = c.String(),
-                        Street = c.String(),
+                        Country = c.String(nullable: false),
+                        City = c.String(nullable: false),
+                        State = c.String(nullable: false),
+                        ZipCode = c.String(nullable: false),
+                        Street = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -71,10 +71,10 @@ namespace PurchaseReqV3.Migrations
                         UnitPrice = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Description = c.String(maxLength: 500),
                         ActualPrice = c.Decimal(precision: 18, scale: 2),
-                        PurchaseRequisitionId = c.Int(nullable: false),
+                        PurchaseRequisitionId = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("PurchaseReq.PurchaseRequisition", t => t.PurchaseRequisitionId, cascadeDelete: true)
+                .ForeignKey("PurchaseReq.PurchaseRequisition", t => t.PurchaseRequisitionId)
                 .Index(t => t.PurchaseRequisitionId);
             
             CreateTable(

@@ -212,9 +212,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905032048369_Initial.cs" />
-    <Compile Include="Migrations\201905032048369_Initial.Designer.cs">
-      <DependentUpon>201905032048369_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201905061611060_Initial.cs" />
+    <Compile Include="Migrations\201905061611060_Initial.Designer.cs">
+      <DependentUpon>201905061611060_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -327,21 +327,11 @@
     <Content Include="Views\UserBudgetCodes\Details.cshtml" />
     <Content Include="Views\UserBudgetCodes\Edit.cshtml" />
     <Content Include="Views\UserBudgetCodes\Index.cshtml" />
-    <Content Include="Views\PurchaseRequisitions\Create.cshtml" />
-    <Content Include="Views\PurchaseRequisitions\Delete.cshtml" />
-    <Content Include="Views\PurchaseRequisitions\Details.cshtml" />
-    <Content Include="Views\PurchaseRequisitions\Edit.cshtml" />
-    <Content Include="Views\PurchaseRequisitions\Index.cshtml" />
     <Content Include="Views\Campus\Create.cshtml" />
     <Content Include="Views\Campus\Delete.cshtml" />
     <Content Include="Views\Campus\Details.cshtml" />
     <Content Include="Views\Campus\Edit.cshtml" />
     <Content Include="Views\Campus\Index.cshtml" />
-    <Content Include="Views\Items\Create.cshtml" />
-    <Content Include="Views\Items\Delete.cshtml" />
-    <Content Include="Views\Items\Details.cshtml" />
-    <Content Include="Views\Items\Edit.cshtml" />
-    <Content Include="Views\Items\Index.cshtml" />
     <Content Include="Views\Vendors\Create.cshtml" />
     <Content Include="Views\Vendors\Delete.cshtml" />
     <Content Include="Views\Vendors\Details.cshtml" />
@@ -352,6 +342,16 @@
     <Content Include="Views\Addresses\Details.cshtml" />
     <Content Include="Views\Addresses\Edit.cshtml" />
     <Content Include="Views\Addresses\Index.cshtml" />
+    <Content Include="Views\Items\Create.cshtml" />
+    <Content Include="Views\Items\Delete.cshtml" />
+    <Content Include="Views\Items\Details.cshtml" />
+    <Content Include="Views\Items\Edit.cshtml" />
+    <Content Include="Views\Items\Index.cshtml" />
+    <Content Include="Views\PurchaseRequisitions\Create.cshtml" />
+    <Content Include="Views\PurchaseRequisitions\Delete.cshtml" />
+    <Content Include="Views\PurchaseRequisitions\Details.cshtml" />
+    <Content Include="Views\PurchaseRequisitions\Edit.cshtml" />
+    <Content Include="Views\PurchaseRequisitions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -370,8 +370,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905032048369_Initial.resx">
-      <DependentUpon>201905032048369_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905061611060_Initial.resx">
+      <DependentUpon>201905061611060_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

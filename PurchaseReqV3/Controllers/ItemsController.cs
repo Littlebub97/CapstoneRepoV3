@@ -17,7 +17,7 @@ namespace PurchaseReqV3.Controllers
         // GET: Items
         public ActionResult Index()
         {
-            var item = db.Item.Include(i => i.PurchaseRequisition);
+            var item = db.Item.Include(i => i.PurchaseRequisitions);
             return View(item.ToList());
         }
 

@@ -40,12 +40,19 @@
         <td>
             @Html.DisplayFor(modelItem => item.ApprovalStatus)
         </td>
+        @if (!User.IsInRole("Employee"))
+        {
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+
+            </td>
+        }
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            |@Html.ActionLink("Delete", "Delete", new { id = item.Id })
         </td>
     </tr>
 }
 
 </table>
+<input type="button" value="Create items to purchase" onclick='window.location = "@Url.Action("Create", "Items")";' />

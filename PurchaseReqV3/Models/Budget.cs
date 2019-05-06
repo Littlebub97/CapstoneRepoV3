@@ -24,6 +24,7 @@ namespace PurchaseReqV3.Models
 
         public STATUS Status { get; set; }
 
+        [Required]
         public DateTime DateCreated { get; set; }
 
         public DateTime? DateEnded { get; set; }
