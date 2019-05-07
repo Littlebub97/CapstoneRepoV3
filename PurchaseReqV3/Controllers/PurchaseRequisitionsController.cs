@@ -4,20 +4,32 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using PurchaseReqV3.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace PurchaseReqV3.Controllers
 {
     public class PurchaseRequisitionsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private UserManager<User> userManager;
+
+        public PurchaseRequisitionsController()
+        {
+            userManager = new UserManager<User>(new UserStore<User>(db));
+        }
+
 
         // GET: PurchaseRequisitions
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            var purchaseRequisition = db.PurchaseRequisition.Include(p => p.Budgets).Include(p => p.User);
+            var loggedInUser = await userManager.FindByNameAsync(User.Identity.Name);
+            
+            var purchaseRequisition = db.PurchaseRequisition.Include(p => p.Budgets).Include(p => p.User).Where(x =>  x.User.Id == loggedInUser.Id);
             return View(purchaseRequisition.ToList());
         }
 
@@ -37,12 +49,16 @@ namespace PurchaseReqV3.Controllers
         }
 
         // GET: PurchaseRequisitions/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
+            var loggedInUser = await userManager.FindByNameAsync(User.Identity.Name);
+
             ViewBag.dateCreated = DateTime.Now;
             ViewBag.BudgetId = new SelectList(db.Budget, "Id", "Name");
-            ViewBag.UserId = new SelectList(db.Users, "Id", "Email");
-            return View();
+            return View(new PurchaseRequisition()
+            {
+                UserId = loggedInUser.Id
+            });
         }
 
         // POST: PurchaseRequisitions/Create
@@ -50,7 +66,7 @@ namespace PurchaseReqV3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,UserId,Date,Justification,ApprovalStatus,BudgetId")] PurchaseRequisition purchaseRequisition)
+        public ActionResult Create([Bind(Include = "Id,UserId,Date,Justification,BudgetId")] PurchaseRequisition purchaseRequisition)
         {
             purchaseRequisition.Date = DateTime.Now;
             if (ModelState.IsValid)

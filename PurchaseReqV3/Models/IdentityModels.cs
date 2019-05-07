@@ -42,8 +42,11 @@ namespace PurchaseReqV3.Models
         public DbSet<User> User { get; set; }
         public DbSet<Vendor> Vendor { get; set; }
         public DbSet<Address> Address { get; set; }
+        public DbSet<Approval> Approval { get; set; }
 
-       // public System.Data.Entity.DbSet<PurchaseReqV3.Models.Address> Addresses { get; set; }
+        //public System.Data.Entity.DbSet<PurchaseReqV3.Models.Approval> Approvals { get; set; }
+
+        // public System.Data.Entity.DbSet<PurchaseReqV3.Models.Address> Addresses { get; set; }
 
         //public System.Data.Entity.DbSet<PurchaseReqV3.Models.UserBudgetCode> UserBudgetCodes { get; set; }
     }

@@ -23,10 +23,6 @@ namespace PurchaseReqV3.Models
 
         public ICollection<Item> Items { get; set; }
 
-        public enum APPROVALSTATUS { Approved, Rejected, Cancelled, Shipped, CannotProcess, Delivered, Processing }
-
-        public APPROVALSTATUS ApprovalStatus { get; set; }
-
         public User Approver { get; set; }
 
         public int? BudgetId { get; set; }
