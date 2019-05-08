@@ -13,7 +13,7 @@ namespace PurchaseReqV3.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201905071812027_Initial"; }
+            get { return "201905081524351_Initial"; }
         }
         
         string IMigrationMetadata.Source
