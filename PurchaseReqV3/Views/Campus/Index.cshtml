@@ -4,66 +4,77 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<style>
+    tr:nth-child(even) {
+        background-color: gainsboro;
+    }
+
+    tr:nth-child(odd) {
+        background-color: lightsteelblue;
+    }
+</style>
+
+<h1>Campuses in Purchase Requisition</h1>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <h4>@Html.ActionLink("Create New", "Create")</h4>
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Address.Country)
+            <h4><b>@Html.DisplayNameFor(model => model.Address.Country)</b></h4>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Address.City)
+            <h4><b>@Html.DisplayNameFor(model => model.Address.City)</b></h4>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Address.State)
+            <h4><b>@Html.DisplayNameFor(model => model.Address.State)</b></h4>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Address.Street)
+            <h4><b>@Html.DisplayNameFor(model => model.Address.Street)</b></h4>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Address.ZipCode)
+            <h4><b>@Html.DisplayNameFor(model => model.Address.ZipCode)</b></h4>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.College.CollegeName)
+            <h4><b>@Html.DisplayNameFor(model => model.College.CollegeName)</b></h4>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            <h4><b>@Html.DisplayNameFor(model => model.Name)</b></h4>
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address.Country)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address.State)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address.Street)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address.ZipCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.College.CollegeName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address.Street)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address.ZipCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.College.CollegeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>

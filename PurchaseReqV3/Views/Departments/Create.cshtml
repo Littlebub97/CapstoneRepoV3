@@ -4,14 +4,13 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h1>Create a Department in the Purchase Requisition</h1>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Department</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -47,5 +46,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <h4>@Html.ActionLink("Back to Departments List", "Index")</h4>
 </div>
