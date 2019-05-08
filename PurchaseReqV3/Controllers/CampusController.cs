@@ -127,7 +127,9 @@ namespace PurchaseReqV3.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Campus campus = db.Campus.Find(id);
+            College college = db.College.Find(id);
             db.Campus.Remove(campus);
+            db.College.Remove(college);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

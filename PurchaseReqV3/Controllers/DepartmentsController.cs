@@ -15,6 +15,7 @@ namespace PurchaseReqV3.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Departments
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var department = db.Department.Include(d => d.DepartmentHead).Include(d => d.Divisions);
@@ -22,6 +23,7 @@ namespace PurchaseReqV3.Controllers
         }
 
         // GET: Departments/Details/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +39,7 @@ namespace PurchaseReqV3.Controllers
         }
 
         // GET: Departments/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.UserId = new SelectList(db.Users, "Id", "Email");
@@ -49,6 +52,7 @@ namespace PurchaseReqV3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "Id,Name,UserId,DivisionId")] Department department)
         {
             if (ModelState.IsValid)
@@ -64,6 +68,7 @@ namespace PurchaseReqV3.Controllers
         }
 
         // GET: Departments/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -85,6 +90,7 @@ namespace PurchaseReqV3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "Id,Name,UserId,DivisionId")] Department department)
         {
             if (ModelState.IsValid)
@@ -99,6 +105,7 @@ namespace PurchaseReqV3.Controllers
         }
 
         // GET: Departments/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -116,6 +123,7 @@ namespace PurchaseReqV3.Controllers
         // POST: Departments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Department department = db.Department.Find(id);

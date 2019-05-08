@@ -213,9 +213,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905081524351_Initial.cs" />
-    <Compile Include="Migrations\201905081524351_Initial.Designer.cs">
-      <DependentUpon>201905081524351_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201905081840023_Initial.cs" />
+    <Compile Include="Migrations\201905081840023_Initial.Designer.cs">
+      <DependentUpon>201905081840023_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -360,6 +360,7 @@
     <Content Include="Views\Approvals\Details.cshtml" />
     <Content Include="Views\Approvals\Edit.cshtml" />
     <Content Include="Views\Approvals\Index.cshtml" />
+    <Content Include="Views\PurchaseRequisitions\CannotDelete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -378,8 +379,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905081524351_Initial.resx">
-      <DependentUpon>201905081524351_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905081840023_Initial.resx">
+      <DependentUpon>201905081840023_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

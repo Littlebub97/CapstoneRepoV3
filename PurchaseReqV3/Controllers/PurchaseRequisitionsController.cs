@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using PurchaseReqV3.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using PurchaseReqV3.ViewModels;
 
 namespace PurchaseReqV3.Controllers
 {
@@ -23,17 +24,45 @@ namespace PurchaseReqV3.Controllers
             userManager = new UserManager<User>(new UserStore<User>(db));
         }
 
+        //public async Task<ActionResult> ViewReq(int purchaseRequisitionId, PurchaseReqWithItemsandVendor p)
+        //{
+        //    PurchaseRequisition pur = new PurchaseRequisition()
+        //    {
+        //        User = new User()
+        //        {
+        //            UserName = p.UserName
+        //        },
+                
+
+        //    }
+            
+        //}
+
 
         // GET: PurchaseRequisitions
+        [Authorize(Roles ="Employee, President")]
         public async Task<ActionResult> Index()
         {
             var loggedInUser = await userManager.FindByNameAsync(User.Identity.Name);
             
             var purchaseRequisition = db.PurchaseRequisition.Include(p => p.Budgets).Include(p => p.User).Where(x =>  x.User.Id == loggedInUser.Id);
-            return View(purchaseRequisition.ToList());
+            try
+            {
+                return View(purchaseRequisition.ToList());
+            }
+            catch(Exception e)
+            {
+                return RedirectToAction("Login", "Account", new { area = "" });
+            }
+        }
+
+        public ActionResult CannotDelete()
+        {
+            return View();
         }
 
         // GET: PurchaseRequisitions/Details/5
+        [Authorize(Roles = "Employee, President")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -49,6 +78,7 @@ namespace PurchaseReqV3.Controllers
         }
 
         // GET: PurchaseRequisitions/Create
+        [Authorize(Roles = "Employee, President")]
         public async Task<ActionResult> Create()
         {
             var loggedInUser = await userManager.FindByNameAsync(User.Identity.Name);
@@ -66,6 +96,7 @@ namespace PurchaseReqV3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Employee, President")]
         public ActionResult Create([Bind(Include = "Id,UserId,Date,Justification,BudgetId")] PurchaseRequisition purchaseRequisition)
         {
             purchaseRequisition.Date = DateTime.Now;
@@ -82,6 +113,7 @@ namespace PurchaseReqV3.Controllers
         }
 
         // GET: PurchaseRequisitions/Edit/5
+        [Authorize(Roles = "Employee, President")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -103,6 +135,7 @@ namespace PurchaseReqV3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Employee, President")]
         public ActionResult Edit([Bind(Include = "Id,UserId,Date,Justification,ApprovalStatus,BudgetId")] PurchaseRequisition purchaseRequisition)
         {
             if (ModelState.IsValid)
@@ -117,6 +150,7 @@ namespace PurchaseReqV3.Controllers
         }
 
         // GET: PurchaseRequisitions/Delete/5
+        [Authorize(Roles = "Employee, President")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -134,11 +168,35 @@ namespace PurchaseReqV3.Controllers
         // POST: PurchaseRequisitions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Employee, President")]
         public ActionResult DeleteConfirmed(int id)
         {
             PurchaseRequisition purchaseRequisition = db.PurchaseRequisition.Find(id);
+            Item item = db.Item.Find(id);
+            Approval approval = db.Approval.Find(id);
             db.PurchaseRequisition.Remove(purchaseRequisition);
-            db.SaveChanges();
+            try
+            {
+                db.Item.Remove(item);
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("CannotDelete");
+            }
+            try
+            {
+                db.Approval.Remove(approval);
+            }
+            catch(Exception e)
+            {
+                return RedirectToAction("CannotDelete");
+            }
+            try
+            {
+                db.SaveChanges();
+            }
+            catch(Exception e)
+            { return RedirectToAction("CannotDelete"); }
             return RedirectToAction("Index");
         }
 

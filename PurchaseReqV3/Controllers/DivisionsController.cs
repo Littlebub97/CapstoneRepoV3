@@ -15,6 +15,7 @@ namespace PurchaseReqV3.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Divisions
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var division = db.Division.Include(d => d.DivisionChair);
@@ -22,6 +23,7 @@ namespace PurchaseReqV3.Controllers
         }
 
         // GET: Divisions/Details/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +39,7 @@ namespace PurchaseReqV3.Controllers
         }
 
         // GET: Divisions/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.UserId = new SelectList(db.Users, "Id", "Email");
@@ -48,6 +51,7 @@ namespace PurchaseReqV3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "Id,Name,UserId")] Division division)
         {
             if (ModelState.IsValid)
@@ -62,6 +66,7 @@ namespace PurchaseReqV3.Controllers
         }
 
         // GET: Divisions/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -82,6 +87,7 @@ namespace PurchaseReqV3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "Id,Name,UserId")] Division division)
         {
             if (ModelState.IsValid)
@@ -95,6 +101,7 @@ namespace PurchaseReqV3.Controllers
         }
 
         // GET: Divisions/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -112,6 +119,7 @@ namespace PurchaseReqV3.Controllers
         // POST: Divisions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Division division = db.Division.Find(id);

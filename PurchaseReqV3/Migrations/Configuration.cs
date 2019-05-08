@@ -58,7 +58,7 @@ namespace PurchaseReqV3.Migrations
                 new IdentityRole { Name = "Executive Director, Workforce and Economic Development" },
                 new IdentityRole { Name = "Chair Humanities, Fine Arts and Social Sciences" },
                 new IdentityRole { Name = "Professional Technologist to Online Learning" },
-                new IdentityRole { Name = "Chair Science, Technology, Engineering, and Math" },
+                new IdentityRole { Name = "Chair Science Technology Engineering and Math" },
                 new IdentityRole { Name = "Director, Library" },
 
                 new IdentityRole { Name = "Vice President, Student Services" },
@@ -613,14 +613,14 @@ namespace PurchaseReqV3.Migrations
             }
 
             //Adding Chair Science, Technology, Engineering and Math
-            if (!context.Users.Any(u => u.UserName == "Jenna@web.com"))
+            if (!context.Users.Any(u => u.UserName == "Jared@web.com"))
             {
                 var Chair_Science_Technology_Engineering_and_Math = new User
                 {
-                    UserName = "Jenna@web.com",
-                    Email = "Jenna@web.com",
-                    F_name = "Jenna",
-                    L_name = "Keller",
+                    UserName = "Jared@web.com",
+                    Email = "Jared@web.com",
+                    F_name = "Jared",
+                    L_name = "Gump",
                     Address = "41 W. Mayfair Rd. Muncie, IN 47302",
                     PhoneNumber = "(662) 540-9268",
                     PasswordHash = PasswordHash.HashPassword("Password1!"),
@@ -628,7 +628,7 @@ namespace PurchaseReqV3.Migrations
                     DateHired = new DateTime(2019, 04, 20)
                 };
                 UserManager.Create(Chair_Science_Technology_Engineering_and_Math);
-                UserManager.AddToRole(Chair_Science_Technology_Engineering_and_Math.Id, "Chair Science, Technology, Engineering, and Math");
+                UserManager.AddToRole(Chair_Science_Technology_Engineering_and_Math.Id, "Chair Science Technology Engineering and Math");
             }
 
             //Adding Director, Library

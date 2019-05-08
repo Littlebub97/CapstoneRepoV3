@@ -10,14 +10,13 @@ namespace PurchaseReqV3.ViewModels
     {
         public string UserName { get; set; }
 
-        public string Item { get; set; }
+        public string ItemName { get; set; }
 
         public DateTime Date { get; set; }
 
         public Decimal Price { get; set; }
 
         public Decimal ActualPrice { get; set; }
-
 
     }
 }
