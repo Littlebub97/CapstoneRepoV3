@@ -15,7 +15,7 @@ namespace PurchaseReqV3.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Approvals
-        [Authorize(Roles = "Chair Science Technology Engineering and Math")]
+        [Authorize(Roles = "Chair Science Technology Engineering and Math, Employee, readonly")]
         public ActionResult Index()
         {
             var approvals = db.Approval.Include(a => a.purchaseRequisition);

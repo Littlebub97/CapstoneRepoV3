@@ -40,7 +40,7 @@ namespace PurchaseReqV3.Controllers
 
 
         // GET: PurchaseRequisitions
-        [Authorize(Roles ="Employee, President")]
+        [Authorize(Roles = "Employee, President, Chair Science Technology Engineering and Math, readonly")]
         public async Task<ActionResult> Index()
         {
             var loggedInUser = await userManager.FindByNameAsync(User.Identity.Name);
