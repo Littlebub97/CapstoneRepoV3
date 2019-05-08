@@ -51,7 +51,8 @@ namespace PurchaseReqV3.Controllers
             var PurchaseReqwithItemsandVendor = new PurchaseReqWithItemsandVendor
             {
                 Items = Item,
-                Users = User
+                Users = User,
+                Budgets = Budget
 
 
             };
