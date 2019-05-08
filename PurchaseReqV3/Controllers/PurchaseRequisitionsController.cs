@@ -24,18 +24,20 @@ namespace PurchaseReqV3.Controllers
             userManager = new UserManager<User>(new UserStore<User>(db));
         }
 
-        //public async Task<ActionResult> ViewReq(int purchaseRequisitionId, PurchaseReqWithItemsandVendor p)
+        //  public ActionResult CreatePurchaseReqwithItemsandVendor()
         //{
-        //    PurchaseRequisition pur = new PurchaseRequisition()
+        //    var PurchaseReqwithItemsandVendor = new PurchaseReqWithItemsandVendor
         //    {
-        //        User = new User()
-        //        {
-        //            UserName = p.UserName
-        //        },
-                
+        //        UserName = User.Identity.GetUserName,
+        //        ActualPrice = ActualPrice,
+        //        Date = DateTime,
+        //        Id = Id,
+        //        ItemName = itemname,
+        //        Price = Price
 
-        //    }
-            
+
+        //    };
+        //    return View(PurchaseReqwithItemsandVendor);
         //}
 
 

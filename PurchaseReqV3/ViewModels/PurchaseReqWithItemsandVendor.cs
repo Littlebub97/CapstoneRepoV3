@@ -18,5 +18,7 @@ namespace PurchaseReqV3.ViewModels
 
         public Decimal ActualPrice { get; set; }
 
+        public List<User> Users { get; set; }
+        public List<Item> Items { get; set; }
     }
 }
