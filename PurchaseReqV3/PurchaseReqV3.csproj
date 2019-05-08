@@ -361,6 +361,8 @@
     <Content Include="Views\Approvals\Edit.cshtml" />
     <Content Include="Views\Approvals\Index.cshtml" />
     <Content Include="Views\PurchaseRequisitions\CannotDelete.cshtml" />
+    <Content Include="Views\PurchaseRequisitions\PurchaseReqwithItemsandVendor.cshtml" />
+    <Content Include="Views\PurchaseRequisitions\CreatePurchaseReqwithItemsandVendor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

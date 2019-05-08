@@ -24,21 +24,39 @@ namespace PurchaseReqV3.Controllers
             userManager = new UserManager<User>(new UserStore<User>(db));
         }
 
-        //  public ActionResult CreatePurchaseReqwithItemsandVendor()
-        //{
-        //    var PurchaseReqwithItemsandVendor = new PurchaseReqWithItemsandVendor
-        //    {
-        //        UserName = User.Identity.GetUserName,
-        //        ActualPrice = ActualPrice,
-        //        Date = DateTime,
-        //        Id = Id,
-        //        ItemName = itemname,
-        //        Price = Price
+          public ActionResult CreatePurchaseReqwithItemsandVendor()
+        {
+            var User = new List<User>()
+            {
+                new User {UserName = "Admin@web.com"}
+            };
+            var Item = new List<Item>()
+            {
+              new Item {Name="dumb", UnitPrice =50.00M, Description="Because", Quantity= 1  }
+            };
+            var Vendor = new List<Vendor>()
+            {
+               new Vendor{Name="Amazon", StateContract=false, Phone=null}
+            };
+            var PurchaseReq = new List<PurchaseRequisition>()
+            {
+                new PurchaseRequisition{Date = DateTime.Now, Justification="Because" }
+            };
+
+            var Budget = new List<Budget>()
+            {
+                new Budget { Amount= 500.00M, DateCreated=DateTime.Now, Name="CS", Type = Models.Budget.TYPE.Annual, DateEnded=null }
+            };
+
+            var PurchaseReqwithItemsandVendor = new PurchaseReqWithItemsandVendor
+            {
+                Items = Item,
+                Users = User
 
 
-        //    };
-        //    return View(PurchaseReqwithItemsandVendor);
-        //}
+            };
+            return View(PurchaseReqwithItemsandVendor);
+        }
 
 
         // GET: PurchaseRequisitions

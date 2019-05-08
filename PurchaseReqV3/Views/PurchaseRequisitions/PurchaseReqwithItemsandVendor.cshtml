@@ -1,0 +1,11 @@
+﻿@model PurchaseReqV3.Models.PurchaseRequisition
+@{
+    ViewBag.Title = "PurchaseReqwithItemsandVendor";
+}
+
+<h2>PurchaseReqwithItemsandVendor</h2>
+
+@foreach(var item in Model.Items)
+{
+    <h1>@item.Name</h1>
+}
