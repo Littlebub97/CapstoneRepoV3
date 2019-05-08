@@ -26,6 +26,7 @@ namespace PurchaseReqV3.Controllers
 
           public ActionResult CreatePurchaseReqwithItemsandVendor()
         {
+            var Items = (from item in db.Item select item).ToList();
             var User = new List<User>()
             {
                 new User {UserName = "Admin@web.com"}
