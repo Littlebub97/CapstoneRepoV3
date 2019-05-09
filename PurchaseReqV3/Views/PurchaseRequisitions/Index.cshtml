@@ -14,8 +14,8 @@
         }
     </style>
 
-    <h1 style="color: gainsboro">Purchase Requests</h1>
-
+    <h1>Purchase Requests</h1>
+    <h4>@Html.ActionLink("Create New", "Create")</h4>
     <table class="table">
         <tr>
             <th>
@@ -57,6 +57,6 @@
         }
 
     </table>
-    <h4>@Html.ActionLink("Create New", "Create")</h4>
+
     <input type="button" value="Create items to purchase" onclick='window.location = "@Url.Action("Create", "Items")";' />
-    </div>
+</div>

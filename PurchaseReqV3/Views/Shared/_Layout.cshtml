@@ -24,16 +24,25 @@
 
                 @if (User.Identity.IsAuthenticated)
                 {
-                    if (User.IsInRole("Admin"))
+                    if (User.IsInRole("Chair Science Technology Engineering and Math"))
+                    {
+                        @Html.ActionLink("Pending requisitions", "Details/1", "PurchaseRequisitions", new { area = "" }, new { @class = "navbar-brand" })
+                        
+                    }
+                }
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole(""))
                     {
                         @Html.ActionLink("Users", "Index", "Account/Register", new { area = "" }, new { @class = "navbar-brand" })
                         @Html.ActionLink("Colleges", "Index", "Colleges", new { area = "" }, new { @class = "navbar-brand" })
                         @Html.ActionLink("Campus", "Index", "Campus", new { area = "" }, new { @class = "navbar-brand" })
                         @Html.ActionLink("Divisions", "Index", "Divisions", new { area = "" }, new { @class = "navbar-brand" })
                         @Html.ActionLink("Departments", "Index", "Departments", new { area = "" }, new { @class = "navbar-brand" })
-                        @Html.ActionLink("Role", "Index", "Role", new { area = "" }, new { @class = "navbar-brand" })
                     }
                 }
+
 
                 @if (User.Identity.IsAuthenticated)
                 {

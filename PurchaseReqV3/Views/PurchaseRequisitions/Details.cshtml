@@ -1,17 +1,32 @@
-﻿
-@{
-    ViewBag.Title = "CreatePurchaseReqwithItemsandVendor";
-}
+﻿<div style="background-color: gainsboro; opacity: 0.9">
+    <style>
+        tr:nth-child(even) {
+            background-color: gainsboro;
+        }
 
-<h2>CreatePurchaseReqwithItemsandVendor</h2>
+        tr:nth-child(odd) {
+            background-color: lightsteelblue;
+        }
+    </style>
+    @{
+        ViewBag.Title = "CreatePurchaseReqwithItemsandVendor";
+    }
 
-@foreach (var item in Model.Items)
-{
-    <h1>@item.Name</h1>
-}
-
-
-@foreach(var user in Model.Users)
-{
-    <h1> @user.Username</h1>
-}
+    <h2>CreatePurchaseReqwithItemsandVendor</h2>
+    <table>
+             
+        @foreach (var item in Model.Items)
+        {
+        <tr>
+            @item.Name
+        </tr>
+        <th>@item.UnitPrice</th>
+        <tr>@item.Quantity</tr>
+        <th>@item.Description</th>
+        }
+        </table>
+        @Html.ActionLink("Pending 2", "Details/2", "PurchaseRequisitions", new { area = "" }, new { @class = "navbar-brand" })
+        @Html.ActionLink("Pending 3", "Details/3", "PurchaseRequisitions", new { area = "" }, new { @class = "navbar-brand" })
+        @Html.ActionLink("Pending 4", "Details/4", "PurchaseRequisitions", new { area = "" }, new { @class = "navbar-brand" })
+        @Html.ActionLink("Pending 5", "Details/5", "PurchaseRequisitions", new { area = "" }, new { @class = "navbar-brand" })
+    </div>
