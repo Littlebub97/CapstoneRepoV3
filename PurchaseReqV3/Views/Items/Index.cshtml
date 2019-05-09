@@ -4,10 +4,20 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<style>
+    tr:nth-child(even) {
+        background-color: gainsboro;
+    }
+
+    tr:nth-child(odd) {
+        background-color: lightsteelblue;
+    }
+</style>
+
+<h1>Registered Items in the Purchase Requisition System</h1>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <h4>@Html.ActionLink("Create New", "Create")</h4>
 </p>
 <table class="table">
     <tr>
