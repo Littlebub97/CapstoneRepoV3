@@ -1,67 +1,68 @@
 ﻿@model PurchaseReqV3.Models.Budget
+<div style="background-color: gainsboro; opacity: 0.9">
+    @{
+        ViewBag.Title = "Details";
+    }
 
-@{
-    ViewBag.Title = "Details";
-}
+    <h1>Budget Details</h1>
 
-<h1>Budget Details</h1>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Type)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Type)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Type)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Type)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Amount)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Amount)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Amount)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Amount)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DateCreated)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DateCreated)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DateCreated)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.DateCreated)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DateEnded)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DateEnded)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DateEnded)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.DateEnded)
-        </dd>
+        </dl>
+    </div>
 
-    </dl>
-</div>
-
-<p>
-    @*
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
-    <h4>@Html.ActionLink("Back to Budgets List", "Index")</h4>
-</p>
+    <p>
+        @*
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
+        <h4>@Html.ActionLink("Back to Budgets List", "Index")</h4>
+    </p>
+    </div>

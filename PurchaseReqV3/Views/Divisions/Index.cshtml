@@ -1,49 +1,51 @@
 ﻿@model IEnumerable<PurchaseReqV3.Models.Division>
-
-@{
-    ViewBag.Title = "Index";
-}
-
-<style>
-    tr:nth-child(even) {
-        background-color: gainsboro;
+<div style="background-color: gainsboro; opacity: 0.9">
+    @{
+        ViewBag.Title = "Index";
     }
 
-    tr:nth-child(odd) {
-        background-color: lightsteelblue;
-    }
-</style>
+    <style>
+        tr:nth-child(even) {
+            background-color: gainsboro;
+        }
 
-<h1>Divisions in Purchase Requisition System</h1>
+        tr:nth-child(odd) {
+            background-color: lightsteelblue;
+        }
+    </style>
 
-<p>
-    <h4>@Html.ActionLink("Create New", "Create")</h4>
-</p>
-<table class="table">
-    <tr>
-        <th>
-            <h4><b>Division Head</b><h4>
-        </th>
-        <th>
-            <h4><b>Division</b><h4>
-</th>
-        <th></th>
-    </tr>
+    <h1>Divisions in Purchase Requisition System</h1>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DivisionChair.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    <p>
+        <h4>@Html.ActionLink("Create New", "Create")</h4>
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                <h4><b>Division Head</b><h4>
+            </th>
+            <th>
+                <h4><b>Division</b><h4>
+            </th>
+            <th></th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DivisionChair.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

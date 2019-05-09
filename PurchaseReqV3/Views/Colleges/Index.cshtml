@@ -1,45 +1,46 @@
 ﻿@model IEnumerable<PurchaseReqV3.Models.College>
-
-@{
-    ViewBag.Title = "Colleges";
-}
-<style>
-    tr:nth-child(even) {
-        background-color: gainsboro;
+<div style="background-color: gainsboro; opacity: 0.9">
+    @{
+        ViewBag.Title = "Colleges";
     }
+    <style>
+        tr:nth-child(even) {
+            background-color: gainsboro;
+        }
 
-    tr:nth-child(odd){
-        background-color: lightsteelblue;
-    }
-</style>
+        tr:nth-child(odd) {
+            background-color: lightsteelblue;
+        }
+    </style>
 
 
-<h1>Colleges in Purchase Requisition System</h1>
+    <h1>Colleges in Purchase Requisition System</h1>
 
-<p>
-    <h4>@Html.ActionLink("Create New", "Create")</h4>
-</p>
-<table class="table">
-    <tr>
-        <th>
-            <h4 style="margin-top: 10px"><b>Colleges</b></h4>
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr >
-            <td>
-                @Html.DisplayFor(modelItem => item.CollegeName)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
+    <p>
+        <h4>@Html.ActionLink("Create New", "Create")</h4>
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                <h4 style="margin-top: 10px"><b>Colleges</b></h4>
+            </th>
+            <th></th>
         </tr>
 
-    }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CollegeName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
 
-</table>
+        }
+
+    </table>
+    </div>

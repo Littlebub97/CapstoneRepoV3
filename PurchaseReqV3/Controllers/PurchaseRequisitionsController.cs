@@ -31,6 +31,8 @@ namespace PurchaseReqV3.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var Items = (from item in db.Item where item.PurchaseRequisitionId == id select item).ToList();
+            var Vendors = (from vendor in db.Vendor where vendor.ItemId == id select vendor).ToList();
+            //var Users = (from user in db.User where user.Id.Equals(id) select user).ToList();
             
             var User = new List<User>()
             {

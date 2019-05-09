@@ -1,78 +1,81 @@
 ﻿@model IEnumerable<PurchaseReqV3.Models.Budget>
 
-@{
-    ViewBag.Title = "Index";
-}
-
-<style>
-    tr:nth-child(even) {
-        background-color: gainsboro;
+<div style="background-color: gainsboro; opacity: 0.9">
+    @{
+        ViewBag.Title = "Index";
     }
 
-    tr:nth-child(odd) {
-        background-color: lightsteelblue;
-    }
-</style>
-
-<h1>Budgets in Purchase Requisition System</h1>
-@if (!User.IsInRole("State Auditor"))
-{
-<p>
-    <h4>@Html.ActionLink("Create New", "Create")</h4>
-</p>
-}
-<table class="table">
-    <tr>
-        <th>
-            <h4><b>Name</b></h4>
-        </th>
-        <th>
-            <h4><b>Type</b></h4>
-        </th>
-        <th>
-            <h4><b>Amount</b></h4>
-        </th>
-        <th>
-            <h4><b>Status</b></h4>
-        </th>
-        <th>
-            <h4><b>Start Date</b></h4>
-        </th>
-        <th>
-            <h4><b>End Date</b></h4>
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Amount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateCreated)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateEnded)
-        </td>
-        @if (!User.IsInRole("State Auditor"))
-        {
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-        </td>
+    <style>
+        tr:nth-child(even) {
+            background-color: gainsboro;
         }
-    </tr>
-}
 
-</table>
+        tr:nth-child(odd) {
+            background-color: lightsteelblue;
+        }
+    </style>
+
+    <h1>Budgets in Purchase Requisition System</h1>
+    @if (!User.IsInRole("State Auditor"))
+    {
+        <p>
+            <h4>@Html.ActionLink("Create New", "Create")</h4>
+        </p>
+    }
+    <table class="table">
+        <tr>
+            <th>
+                <h4><b>Name</b></h4>
+            </th>
+            <th>
+                <h4><b>Type</b></h4>
+            </th>
+            <th>
+                <h4><b>Amount</b></h4>
+            </th>
+            <th>
+                <h4><b>Status</b></h4>
+            </th>
+            <th>
+                <h4><b>Start Date</b></h4>
+            </th>
+            <th>
+                <h4><b>End Date</b></h4>
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateCreated)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateEnded)
+                </td>
+                @if (!User.IsInRole("State Auditor"))
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                }
+            </tr>
+        }
+
+    </table>
+    </div>

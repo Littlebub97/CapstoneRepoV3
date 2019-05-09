@@ -20,6 +20,7 @@ namespace PurchaseReqV3.ViewModels
 
         public List<User> Users { get; set; }
         public List<Item> Items { get; set; }
+        public List<Vendor> Vendors { get; set; }
         public List<Budget> Budgets { get; set; }
     }
 }

@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<PurchaseReqV3.Models.Address>
+<div style = "background-color: gainsboro; opacity: 0.9">
+
 
 @{
     ViewBag.Title = "Index";
@@ -68,3 +70,4 @@
 </table>
 <input type="button" value="Go back to Campus creation" onclick='window.location = "@Url.Action("Create", "Campus")";' />
 <input type="button" value="Go back to Vendor creation" onclick='window.location = "@Url.Action("Create", "Vendors")";' />
+</div>

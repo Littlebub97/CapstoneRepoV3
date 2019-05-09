@@ -1,33 +1,36 @@
 ﻿@model PurchaseReqV3.Models.UserBudgetCode
+<div style="background-color: gainsboro; opacity: 0.9">
+    @{
+        ViewBag.Title = "Details";
+    }
 
-@{
-    ViewBag.Title = "Details";
-}
+    <h1>Employee Budget Details</h1>
 
-<h1>Employee Budget Details</h1>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Budget.Name)
+            </dt>
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Budget.Name)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Budget.Name)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Budget.Name)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.User.Email)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.User.Email)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.User.Email)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.User.Email)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    <h4>@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to Employee Budgets", "Index")</h4>
+        </dl>
+    </div>
+    <p>
+        <h4>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to Employee Budgets", "Index")
+    </h4>
 </p>
+    </div>

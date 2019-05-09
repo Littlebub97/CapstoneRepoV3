@@ -1,54 +1,56 @@
 ﻿@model IEnumerable<PurchaseReqV3.Models.Approval>
-
-@{
-    ViewBag.Title = "Index";
-}
-
-<style>
-    tr:nth-child(even) {
-        background-color: gainsboro;
+<div style="background-color: gainsboro; opacity: 0.9">
+    @{
+        ViewBag.Title = "Index";
     }
 
-    tr:nth-child(odd) {
-        background-color: lightsteelblue;
-    }
-</style>
-<h1>Purchase Requisitions</h1>
+    <style>
+        tr:nth-child(even) {
+            background-color: gainsboro;
+        }
 
-<p>
-    <h4>@Html.ActionLink("Create New", "Create")</h4>
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.purchaseRequisition.UserId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ApprovalStatus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ReasonForDenial)
-        </th>
-        <th></th>
-    </tr>
+        tr:nth-child(odd) {
+            background-color: lightsteelblue;
+        }
+    </style>
+    <h1>Purchase Requisitions</h1>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.purchaseRequisition.UserId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApprovalStatus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReasonForDenial)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    <p>
+        <h4>@Html.ActionLink("Create New", "Create")</h4>
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.purchaseRequisition.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApprovalStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReasonForDenial)
+            </th>
+            <th></th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.purchaseRequisition.UserId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApprovalStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReasonForDenial)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

@@ -1,33 +1,36 @@
 ﻿@model PurchaseReqV3.Models.Division
+<div style="background-color: gainsboro; opacity: 0.9">
+    @{
+        ViewBag.Title = "Details";
+    }
 
-@{
-    ViewBag.Title = "Details";
-}
+    <h1>Division Details</h1>
 
-<h1>Division Details</h1>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.DivisionChair.Email)
+            </dt>
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.DivisionChair.Email)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DivisionChair.Email)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.DivisionChair.Email)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    <h4>@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to Divisions List", "Index")</h4>
+        </dl>
+    </div>
+    <p>
+        <h4>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to Divisions List", "Index")
+    </h4>
 </p>
+    </div>

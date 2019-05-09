@@ -1,41 +1,44 @@
 ﻿@model PurchaseReqV3.Models.Department
+<div style="background-color: gainsboro; opacity: 0.9">
+    @{
+        ViewBag.Title = "Details";
+    }
 
-@{
-    ViewBag.Title = "Details";
-}
+    <h1>Department Details</h1>
 
-<h1>Department Details</h1>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.DepartmentHead.Email)
+            </dt>
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.DepartmentHead.Email)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DepartmentHead.Email)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.DepartmentHead.Email)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Divisions.Name)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Divisions.Name)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Divisions.Name)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Divisions.Name)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    <h4>@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to Departments List", "Index")</h4>
+        </dl>
+    </div>
+    <p>
+        <h4>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to Departments List", "Index")
+    </h4>
 </p>
+    </div>

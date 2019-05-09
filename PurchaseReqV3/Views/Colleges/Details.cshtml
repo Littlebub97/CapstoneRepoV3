@@ -1,25 +1,28 @@
 ﻿@model PurchaseReqV3.Models.College
+<div style="background-color: gainsboro; opacity: 0.9">
+    @{
+        ViewBag.Title = "Details";
+    }
 
-@{
-    ViewBag.Title = "Details";
-}
+    <h1>College Details</h1>
 
-<h1>College Details</h1>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CollegeName)
+            </dt>
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CollegeName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CollegeName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CollegeName)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    <h4>@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to Colleges List", "Index")</h4>
+        </dl>
+    </div>
+    <p>
+        <h4>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to Colleges List", "Index")
+    </h4>
 </p>
+    </div>
