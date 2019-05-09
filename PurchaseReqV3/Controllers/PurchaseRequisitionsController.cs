@@ -24,11 +24,13 @@ namespace PurchaseReqV3.Controllers
             userManager = new UserManager<User>(new UserStore<User>(db));
         }
 
-          public ActionResult CreatePurchaseReqwithItemsandVendor()
+          public ActionResult CreatePurchaseReqwithItemsandVendor(int id)
         {
-            var Items = (from item in db.Item select item).ToList();
+            var Items = (from item in db.Item where item.PurchaseRequisitionId == id select item).ToList();
+            
             var User = new List<User>()
             {
+                
                 new User {UserName = "Admin@web.com"}
             };
             var Item = new List<Item>()
@@ -51,7 +53,7 @@ namespace PurchaseReqV3.Controllers
 
             var PurchaseReqwithItemsandVendor = new PurchaseReqWithItemsandVendor
             {
-                Items = Item,
+                Items = Items,
                 Users = User,
                 Budgets = Budget
 
