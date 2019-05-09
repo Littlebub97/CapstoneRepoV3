@@ -244,6 +244,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\background-blank-composition-583848.jpg" />
     <Content Include="Content\images\Change.png" />
     <Content Include="Content\images\WVUP.JPG" />
     <Content Include="Content\images\WVUPlogo.png" />
@@ -352,7 +353,6 @@
     <Content Include="Views\Items\Index.cshtml" />
     <Content Include="Views\PurchaseRequisitions\Create.cshtml" />
     <Content Include="Views\PurchaseRequisitions\Delete.cshtml" />
-    <Content Include="Views\PurchaseRequisitions\Details.cshtml" />
     <Content Include="Views\PurchaseRequisitions\Edit.cshtml" />
     <Content Include="Views\PurchaseRequisitions\Index.cshtml" />
     <Content Include="Views\Approvals\Create.cshtml" />
@@ -361,7 +361,7 @@
     <Content Include="Views\Approvals\Edit.cshtml" />
     <Content Include="Views\Approvals\Index.cshtml" />
     <Content Include="Views\PurchaseRequisitions\CannotDelete.cshtml" />
-    <Content Include="Views\PurchaseRequisitions\CreatePurchaseReqwithItemsandVendor.cshtml" />
+    <Content Include="Views\PurchaseRequisitions\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

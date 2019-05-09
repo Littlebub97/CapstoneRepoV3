@@ -1,50 +1,16 @@
-﻿@model PurchaseReqV3.Models.PurchaseRequisition
-
+﻿
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "CreatePurchaseReqwithItemsandVendor";
 }
 
-<h2>Details</h2>
+<h2>CreatePurchaseReqwithItemsandVendor</h2>
 
-<div>
-    <h4>PurchaseRequisition</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Budgets.Name)
-        </dt>
+@foreach (var item in Model.Items)
+{
+    <h1>@item.Name</h1>
+}
 
-        <dd>
-            @Html.DisplayFor(model => model.Budgets.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.User.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.User.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Justification)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Justification)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+@foreach(var budget in Model.Budgets)
+{
+    <h1>@budget.Name</h1>
+}

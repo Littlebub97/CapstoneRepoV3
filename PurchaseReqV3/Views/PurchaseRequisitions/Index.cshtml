@@ -4,11 +4,18 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<style>
+    tr:nth-child(even) {
+        background-color: gainsboro;
+    }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+    tr:nth-child(odd) {
+        background-color: lightsteelblue;
+    }
+</style>
+
+<h1 style="color: gainsboro">Purchase Requests</h1>
+
 <table class="table">
     <tr>
         <th>
@@ -49,4 +56,5 @@
 }
 
 </table>
+<h4>@Html.ActionLink("Create New", "Create")</h4>
 <input type="button" value="Create items to purchase" onclick='window.location = "@Url.Action("Create", "Items")";' />

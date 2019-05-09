@@ -24,8 +24,12 @@ namespace PurchaseReqV3.Controllers
             userManager = new UserManager<User>(new UserStore<User>(db));
         }
 
-          public ActionResult CreatePurchaseReqwithItemsandVendor(int id)
+          public ActionResult Details(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             var Items = (from item in db.Item where item.PurchaseRequisitionId == id select item).ToList();
             
             var User = new List<User>()
@@ -86,20 +90,20 @@ namespace PurchaseReqV3.Controllers
         }
 
         // GET: PurchaseRequisitions/Details/5
-        [Authorize(Roles = "Employee, President")]
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            PurchaseRequisition purchaseRequisition = db.PurchaseRequisition.Find(id);
-            if (purchaseRequisition == null)
-            {
-                return HttpNotFound();
-            }
-            return View(purchaseRequisition);
-        }
+        //[Authorize(Roles = "Employee, President")]
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    PurchaseRequisition purchaseRequisition = db.PurchaseRequisition.Find(id);
+        //    if (purchaseRequisition == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(purchaseRequisition);
+        //}
 
         // GET: PurchaseRequisitions/Create
         [Authorize(Roles = "Employee, President")]
